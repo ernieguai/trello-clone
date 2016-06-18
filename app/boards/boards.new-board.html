@@ -1,0 +1,46 @@
+<!-- <div class="modal-body">
+    <ul>
+        <li ng-repeat="item in items">
+            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ newBoardCtrl.selected.item }}</b>
+</div> -->
+
+
+<form ng-submit="newBoardCtrl.create()" name="newBoard" novalidate>
+  <fieldset>
+
+    <legend class="modal-header">
+      <h3 class="modal-title text-muted">Create Board</h3>
+    </legend>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="board-title">Title</label>
+        <input id="board-title" name="email" ng-model="newBoardCtrl.title" type="text" class="form-control input-sm" placeholder='Like "Team Product Sprint" for example' required>
+      </div>
+
+      <div class="form-group">
+        <label for="board-team">Team</label>
+        <select id="board-team" name="team" ng-model="newBoardCtrl.team" class="form-control input-sm" required>
+          <option value="" selected>(none)</option>
+          <!-- add an ng-repeat through the options -->
+          <option value="alpha">Team alpha</option>
+          <option value="bravo">Team bravo</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <div class="form-group">
+        <button ng-disabled="newBoard.$invalid" class="btn btn-primary pull-left" type="submit">Create</button>
+        <button class="btn btn-link text-muted pull-right" ng-click="newBoardCtrl.cancel()">Cancel</button>
+      </div>
+
+    </div>
+
+  </fieldset>
+</form>

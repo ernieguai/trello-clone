@@ -9,10 +9,10 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <div class="board-card"><a href="#">Place for repeat of boards</a></div>
+    <a class="board-card" href="#">Place for repeat of boards</a>
   </div>
   <div class="col-sm-4">
-    <div class="board-card"><a href="#">Create a new board</a></div>
+    <a class="board-card" href="#" ng-click="boardsCtrl.open('newBoard')">Create a new board</a>
   </div>
 </div>
 <br />
@@ -21,9 +21,13 @@
 <h3><i class="fa fa-users"></i> Team Boards</h3>
 
 <div class="row">
-  <div class="col-sm-4"><a class="board-card" href="#">Place for repeat of boards</a></div>
-  <div class="col-sm-4"><a class="board-card" href="#">Create a new board</a></div>
+  <div class="col-sm-4">
+    <a class="board-card" href="#">Place for repeat of boards</a>
+  </div>
+  <div class="col-sm-4">
+    <a class="board-card" ng-click="boardsCtrl.open('newBoard')" href="#">Create a new board</a>
+  </div>
 </div>
 <br />
 
-<a href="#">Create a new team...</a>
+<a ng-click="boardsCtrl.open('newTeam')" href="#">Create a new team...</a>
