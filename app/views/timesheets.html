@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" ui-sref-active="active"><a ui-sref="timesheets.time">Time</a></li>
+  <li role="presentation" ui-sref-active="active"><a ui-sref="timesheets.expenses">Expenses</a></li>
+</ul>
+
+<ui-view></ui-view>
+
+<h1>Projects List</h1>
+
+<div ng-repeat="project in timesheetsCtrl.projects">
+  <p>{{ project.name }}</p>
+</div>
+
+<div ng-repeat="timesheet in timesheetsCtrl.timesheets"
+<p>Timesheet value: {{ timesheet.body }}</p>
+<p>Timesheet timestamp {{ timesheet.timestamp }}</p>

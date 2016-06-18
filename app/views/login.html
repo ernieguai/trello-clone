@@ -1,0 +1,27 @@
+<form ng-submit="authCtrl.login()" name="login" class="form-signin" novalidate>
+  <fieldset>
+
+    <legend><h1 class="text-muted">Login</h1></legend>
+
+    <div class="form-group">
+      <label for="email-login">Email address</label>
+      <input id="email-login" name="email" ng-model="authCtrl.userAuth.email" type="email" class="form-control input-sm" placeholder="Email address" required>
+      <!-- <p class="help-block" ng-show="login.email.$dirty && login.email.$invalid">Please enter a proper email</p> -->
+    </div>
+
+    <div class="form-group">
+      <label for="password-login">Password</label>
+      <input id="password-login" name="password" ng-model="authCtrl.userAuth.password" type="password" class="form-control input-sm" placeholder="Password" required>
+    </div>
+
+    <div class="form-group">
+      <button ng-disabled="login.$invalid" class="btn btn-primary btn-block" type="submit">
+        Login
+      </button>
+    </div>
+
+    <br />
+    <a class="text-muted pull-right" ui-sref="register">Create account</a>
+
+  </fieldset>
+</form>

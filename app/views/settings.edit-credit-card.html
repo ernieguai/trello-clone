@@ -1,0 +1,144 @@
+<div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+
+  <div class="well">
+    <!-- using a custom checkout form - will need to add my own validation -->
+    <form name="ccForm" novalidate="" id="payment-form">
+      <fieldset>
+        <legend><h2>Credit Card Information</h2></legend>
+
+        <!-- Name on Card -->
+        <!-- <div class="form-group has-feedback" ng-class="{'has-success' : ccForm.ccHolderName.$valid && ccForm.ccHolderName.$dirty, 'has-error' : !ccForm.ccHolderName.$pristine && ccForm.ccHolderName.$invalid}">
+          <label class="control-label" for="nameOnCard">Name on Card</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input class="form-control" type="text" id="nameOnCard" name="ccHolderName" ng-model="payment.card.holder_name" required="" placeholder="Name on Card">
+          </div> -->
+          <!-- Success Icon -->
+          <!-- <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok' : ccForm.ccHolderName.$valid && ccForm.ccHolderName.$dirty}"></span> -->
+
+          <!-- error meessage -->
+          <!-- <span class="help-block" ng-show="!ccForm.ccHolderName.$pristine && ccForm.ccHolderName.$invalid">Please enter your name as it appears on your credit card</span>
+        </div> -->
+
+        <!-- Email address -->
+        <div class="form-group has-feedback" ng-class="{'has-success' : ccForm.ccEmail.$valid && ccForm.ccEmail.$dirty, 'has-error' : !ccForm.ccEmail.$pristine && ccForm.ccEmail.$invalid}">
+          <label class="control-label" for="emailAddress">Email address</label>
+          <div class="input-group">
+            <span class="input-group-addon input-sm"><i class="fa fa-lock"></i></span>
+            <input class="form-control input-sm" type="email" id="emailAddress" name="ccEmail" ng-model="payment.email" required="" placeholder="Email address">
+          </div>
+          <!-- Success Icon -->
+          <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok' : ccForm.ccEmail.$valid && ccForm.ccEmail.$dirty}"></span>
+
+          <!-- error meessage -->
+          <span class="help-block" ng-show="!ccForm.ccEmail.$pristine && ccForm.ccEmail.$invalid">Please enter a valid email address</span>
+        </div>
+
+        <!-- Subscription plan -->
+        <div class="form-group has-feedback" ng-class="{'has-success' : ccForm.plan.$valid && ccForm.plan.$dirty, 'has-error' : !ccForm.plan.$pristine && ccForm.plan.$invalid}">
+          <label class="control-label" for="subPlan">Subscription plan</label>
+          <div class="input-group">
+            <select class="form-control input-sm" type="text" id="subPlan" name="plan" ng-model="payment.plan" required="" placeholder="Plan">
+              <option value="" disabled selected>Team size (select one)</option>
+              <option value="freelancer">Freelancer Plan (1 User)</option>
+            </select>
+          </div>
+          <!-- Success Icon -->
+          <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok' : ccForm.plan.$valid && ccForm.plan.$dirty}"></span>
+
+          <!-- error meessage -->
+          <span class="help-block" ng-show="!ccForm.plan.$pristine && ccForm.plan.$invalid">Please enter a subscription plan</span>
+        </div>
+
+
+        <!-- Credit card number -->
+        <div class="form-group has-feedback" ng-class="{'has-error' : !ccForm.ccNumber.$pristine && ccForm.ccNumber.$invalid, 'has-success' : ccForm.ccNumber.$valid}">
+          <label class="control-label" for="cardNumber">Card number</label>
+          <div class="input-group">
+            <span class="input-group-addon input-sm"><i class"fa fa-lock"></i></span>
+            <input class="form-control input-sm" type="text" id="cardNumber" cc-number="" cc-eager-type="" cc-format="" name="ccNumber" ng-model="payment.card.number" required="" placeholder="Card Number">
+          </div>
+
+          <!-- CREDIT CARD ICONS -->
+          <span class="form-control-feedback" ng-show="ccForm.ccNumber.$ccEagerType=='American Express'"><i class="fa fa-cc-amex"></i></span>
+          <span class="form-control-feedback" ng-show="ccForm.ccNumber.$ccEagerType=='Discover'"><i class="fa fa-cc-discover"></i></span>
+          <span class="form-control-feedback" ng-show="ccForm.ccNumber.$ccEagerType=='MasterCard'"<i class="fa fa-cc-mastercard"></i></span>
+          <span class="form-control-feedback" ng-show="ccForm.ccNumber.$ccEagerType=='Diners Club'"<i class="fa fa-cc-mastercard"></i></span>
+          <span class="form-control-feedback" ng-show="ccForm.ccNumber.$ccEagerType=='Visa'"><i class="fa fa-cc-visa"></i></span>
+          <span class="form-control-feedback" ng-show="ccForm.ccNumber.$ccEagerType==''"><i class="fa fa-credit-card"></i></span>
+
+          <!-- error meessage -->
+          <span class="help-block" ng-show="!ccForm.ccNumber.$pristine && ccForm.ccNumber.$invalid">Please enter a valid credit card number</span>
+        </div>
+
+        <!-- CVC -->
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group has-feedback" ng-class="{'has-error' : !ccForm.ccCvc.$pristine && ccForm.ccCvc.$invalid, 'has-success' : ccForm.ccCvc.$valid}">
+              <label class="control-label" for="cvc">CVC</label>
+              <div class="input-group">
+                <span class="input-group-addon input-sm"><i class="fa fa-lock"></i></span>
+                <input class="form-control input-sm" type="text" id="cvc" cc-cvc="" cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="payment.card.cvc" required="" placeholder="CVC">
+              </div>
+              <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok' : ccForm.ccCvc.$valid}"></span>
+
+              <!-- error meessage -->
+              <span class="help-block" ng-show="!ccForm.ccCvc.$pristine && ccForm.ccCvc.$invalid">Please enter a valid CVC number</span>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Expiration Date -->
+        <div class="row" cc-exp="">
+
+          <!-- Expiration Month -->
+          <div class="col-xs-6">
+            <div class="form-group has-feedback" ng-class="{'has-error' : !ccForm.ccExpMonth.$pristine && ccForm.ccExpMonth.$invalid, 'has-success' : ccForm.ccExpMonth.$valid}">
+              <label class="control-label" for="expMonth">Expiration month</label>
+              <div class="input-group">
+                <span class="input-group-addon input-sm"><i class="fa fa-calendar"></i></span>
+                <input class="form-control input-sm" id="expMonth" type="text" cc-exp-month="" name="ccExpMonth" ng-model="payment.card.exp_month" required="" placeholder="MM">
+              </div>
+              <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok' : ccForm.ccExpMonth.$valid}"></span>
+
+              <!-- error meessage -->
+              <span class="help-block" ng-show="!ccForm.ccExpMonth.$pristine && ccForm.ccExpMonth.$invalid">Please enter a valid month</span>
+            </div>
+          </div>
+
+          <!-- Expiration Year -->
+          <div class="col-xs-6">
+            <div class="form-group.has-feedback" ng-class="{'has-error' : !ccForm.ccExpYear.$pristine && ccForm.ccExpYear.$invalid, 'has-success' : ccForm.ccExpYear.$valid}">
+              <label class="control-label" for="expYear">Expiration year</label>
+              <div class="input-group">
+                <span class="input-group-addon input-sm"><i class="fa fa-calendar"></i></span>
+                <input class="form-control input-sm" id="expYear" type="text" cc-exp-year="" name="ccExpYear" ng-model="payment.card.exp_year" required="" placeholder="YY">
+              </div>
+              <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok' : ccForm.ccExpYear.$valid}"></span>
+
+              <!-- error meessage -->
+              <span class="help-block" ng-show="!ccForm.ccExpYear.$pristine && ccForm.ccExpYear.$invalid">Please enter a valid year</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row checkout-submit">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <div class="pull-left">
+                <button class="btn btn-primary" ng-click="createCustomerWithoutCard()" ng-disabled="ccForm.$invalid || isSubmitting">Submit Payment</button>
+              </div>
+              <div class="pull-right">
+                <a href="/">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</div>
