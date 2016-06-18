@@ -1,16 +1,16 @@
 'use strict';
 
-angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvider) {
 
   function auth ($state, Users, Auth) {
     return Auth.$requireAuth().catch(function() {
-      $state.go('main');
+      $state.go('register');
     });
   }
 
   function requireNoAuth ($state, Auth) {
     return Auth.$requireAuth().then(function(auth) {
-      $state.go('timesheets');
+      $state.go('boards');
     }, function(error) {
       return;
     });
@@ -20,21 +20,20 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     return Auth.$requireAuth().then(function(auth){
       return Users.getProfile(auth.uid).$loaded();
     }, function(error){
-      $state.go('main');
+      // send user to profile page to fill out details
+      // $state.go('main');
     });
   }
 
-  //$locationProvider.html5Mode(true);
-  //$locationProvider.html5Mode({ enabled: true, requireBase: false });
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
 
-  .state('main', {
+  .state('boards', {
     url: '/',
-    templateUrl: '/views/main.html',
-    controller: 'MainCtrl',
-    resolve: { requireNoAuth: requireNoAuth }
+    templateUrl: '/boards/boards.html',
+    controller: 'BoardsCtrl as boardsCtrl',
+    resolve: { auth: auth }
   })
 
   .state('register', {

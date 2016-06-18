@@ -2,14 +2,16 @@
 
 /**
  * @ngdoc function
- * @name trellocloneApp.controller:MainCtrl
+ * @name trellocloneApp.controller:BoardsCtrl
  * @description
- * # MainCtrl
+ * # BoardsCtrl
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
+  .controller('BoardsCtrl', function () {
+    var boardsCtrl = this;
+    
+    boardsCtrl.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'

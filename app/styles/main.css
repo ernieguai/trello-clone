@@ -128,3 +128,30 @@ body {
   padding-top: 11px;
   padding-bottom: 11px;
 }
+
+
+/* Center brand in navbar */
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+}
+.navbar-toggle {
+    z-index:3;
+}
+
+
+
+.board-card {
+  background-color: rgb(226, 228, 230) !important;
+  padding: 20px;
+  position: relative;
+  display: block;
+  margin-bottom: .75rem;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: .25rem;
+}

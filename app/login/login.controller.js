@@ -19,7 +19,7 @@ angular.module('trellocloneApp')
 
     loginCtrl.login = function() {
       Auth.$authWithPassword(loginCtrl.userAuth).then(function (auth) {
-        $state.go('main');
+        $state.go('boards');
         Users.getName(auth.uid).then(function (name) {
           alert('success', "Welcome back " + name + "!");
         });

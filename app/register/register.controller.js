@@ -28,7 +28,7 @@ angular.module('trellocloneApp')
 
           // create Profile after account is created and user logged in
           Users.createProfile(authData.uid, registerCtrl.userProfile).then(function() {
-            $state.go('main');
+            $state.go('boards');
             Users.getName(authData.uid).then(function(name) {
               alert('success', "Welcome " + name + "!");
             });
