@@ -4,55 +4,40 @@
  * @ngdoc function
  * @name trellocloneApp.controller:RegisterCtrl
  * @description
- * # AuthCtrl
+ * # RegisterCtrl
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('RegisterCtrl', function (alert, Auth, Users, $state, $http) {
+  .controller('RegisterCtrl', function (alert, Auth, Users, $state) {
 
-    var authCtrl = this;
+    var registerCtrl = this;
 
-    authCtrl.userAuth = {
+    registerCtrl.userAuth = {
       email: '',
       password: ''
     };
 
-    authCtrl.userProfile = {
+    registerCtrl.userProfile = {
       name: ''
     };
 
-    authCtrl.register = function() {
-      Auth.$createUser(authCtrl.userAuth).then(function (user) {
-        return Auth.$authWithPassword(authCtrl.userAuth);
-      }).then(function (authData) {
+    registerCtrl.register = function() {
+      Auth.$createUser(registerCtrl.userAuth).then(function(user) {
+        return Auth.$authWithPassword(registerCtrl.userAuth);
+      }).then(function(authData) {
 
-          // create Profile after account is created...
-          Users.createProfile(authData.uid, authCtrl.userProfile).then(function() {
+          // create Profile after account is created and user logged in
+          Users.createProfile(authData.uid, registerCtrl.userProfile).then(function() {
             $state.go('main');
-            Users.getName(authData.uid).then(function (name) {
+            Users.getName(authData.uid).then(function(name) {
               alert('success', "Welcome " + name + "!");
             });
-            // TODO: need to handle profile update error here.
           });
-
 
       }).catch(function (error) {
         alert('danger', error.message);
       });
 
-    };
-
-    // TODO: pull out method for handling errors and refactor
-
-    authCtrl.login = function() {
-      Auth.$authWithPassword(authCtrl.userAuth).then(function (auth) {
-        $state.go('main');
-        Users.getName(auth.uid).then(function (name) {
-          alert('success', "Welcome back " + name + "!");
-        });
-      }, function (error) {
-        alert('danger', error.message);
-      });
     };
 
   });

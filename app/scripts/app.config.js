@@ -40,7 +40,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
   .state('register', {
     url: '/register',
     templateUrl: '/register/register.html',
-    controller: 'AuthCtrl as authCtrl',
+    controller: 'RegisterCtrl as registerCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
 
