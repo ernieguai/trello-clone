@@ -12,14 +12,12 @@ angular.module('trellocloneApp')
     var boardsCtrl = this;
 
     boardsCtrl.teams = teams;
-
     boardsCtrl.modals = {
       newTeam: {templateUrl: 'boards/boards.new-team.html', controller: 'NewTeamCtrl as newTeamCtrl'},
       newBoard: {templateUrl: 'boards/boards.new-board.html', controller: 'NewBoardCtrl as newBoardCtrl'}
     };
 
     boardsCtrl.open = function (template) {
-
      var modalInstance = $uibModal.open({
        animation: boardsCtrl.animationsEnabled,
        templateUrl: boardsCtrl.modals[template].templateUrl,
@@ -27,8 +25,11 @@ angular.module('trellocloneApp')
        controller: boardsCtrl.modals[template].controller,
        size: 'sm',
        resolve: {
-         items: function () {
-           return boardsCtrl.items;
+        //  items: function () {
+        //    return boardsCtrl.items;
+        //  },
+         teams: function () {
+           return boardsCtrl.teams;
          }
        }
      });
