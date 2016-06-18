@@ -3,7 +3,7 @@
 describe('Controller: TimesheetsCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('frinvoiceApp'));
+  beforeEach(module('trellocloneApp'));
 
   var TimesheetsCtrl,
     scope;

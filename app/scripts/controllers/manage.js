@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:ManageCtrl
+ * @name trellocloneApp.controller:ManageCtrl
  * @description
  * # ManageCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('ManageCtrl', function () {
 
     var manageCtrl = this;

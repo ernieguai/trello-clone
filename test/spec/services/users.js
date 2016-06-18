@@ -3,7 +3,7 @@
 describe('Service: users', function () {
 
   // load the service's module
-  beforeEach(module('frinvoiceApp'));
+  beforeEach(module('trellocloneApp'));
 
   // instantiate service
   var users;

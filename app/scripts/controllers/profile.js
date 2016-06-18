@@ -3,12 +3,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:ProfileCtrl
+ * @name trellocloneApp.controller:ProfileCtrl
  * @description
  * # ProfileCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('ProfileCtrl', function ($state, md5, auth, profile, Auth, Users) {
     var profileCtrl = this;
 

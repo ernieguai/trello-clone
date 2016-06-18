@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:SettingsCtrl
+ * @name trellocloneApp.controller:SettingsCtrl
  * @description
  * # SettingsCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('SettingsCtrl', function ($scope, stripe, $http, $state, alert, PAYMENT_URL) {
 
     // var settingsCtrl = this;

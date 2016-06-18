@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name frinvoiceApp.auth
+ * @name trellocloneApp.auth
  * @description
  * # auth
- * Factory in the frinvoiceApp.
+ * Factory in the trellocloneApp.
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .factory('Auth', function ($firebaseAuth, FirebaseUrl) {
     var ref = new Firebase(FirebaseUrl);
     var auth = $firebaseAuth(ref);

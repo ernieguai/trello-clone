@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name frinvoiceApp.users
+ * @name trellocloneApp.users
  * @description
  * # users
- * Factory in the frinvoiceApp.
+ * Factory in the trellocloneApp.
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .factory('Users', function ($firebaseArray, $firebaseObject, FirebaseUrl) {
     var usersRef = new Firebase(FirebaseUrl + 'users');
     var users = $firebaseArray(usersRef);
@@ -22,9 +22,17 @@ angular.module('frinvoiceApp')
         return $firebaseObject(usersRef.child(uid));
       },
 
+
+      // TODO: remove this method
       getFirstName: function (uid) {
         return Users.getProfile(uid).$loaded().then(function (profile) {
           return profile.firstName;
+        });
+      },
+
+      getName: function (uid) {
+        return Users.getProfile(uid).$loaded().then(function (profile) {
+          return profile.name;
         });
       },
 

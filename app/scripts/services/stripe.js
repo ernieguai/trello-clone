@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name frinvoiceApp.stripe
+ * @name trellocloneApp.stripe
  * @description
  * # stripe
- * Factory in the frinvoiceApp.
+ * Factory in the trellocloneApp.
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .factory('Stripe', function ($http, stripe) {
     // Service logic
     // ...

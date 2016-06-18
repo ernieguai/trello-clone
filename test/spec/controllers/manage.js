@@ -3,7 +3,7 @@
 describe('Controller: ManageCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('frinvoiceApp'));
+  beforeEach(module('trellocloneApp'));
 
   var ManageCtrl,
     scope;

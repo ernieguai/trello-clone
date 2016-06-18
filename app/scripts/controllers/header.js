@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:HeaderCtrl
+ * @name trellocloneApp.controller:HeaderCtrl
  * @description
  * # HeaderCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('HeaderCtrl', function ($scope, Auth, Users, $state) {
 
     $scope.logout = function() {

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:MainCtrl
+ * @name trellocloneApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

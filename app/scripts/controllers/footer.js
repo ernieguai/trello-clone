@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:FooterCtrl
+ * @name trellocloneApp.controller:FooterCtrl
  * @description
  * # FooterCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('FooterCtrl', function () {
     var footerCtrl = this;
 

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:InvoicesCtrl
+ * @name trellocloneApp.controller:InvoicesCtrl
  * @description
  * # InvoicesCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('InvoicesCtrl', function () {
 
     var invoicesCtrl = this;

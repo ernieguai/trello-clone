@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frinvoiceApp').config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   function auth ($state, Users, Auth) {
     return Auth.$requireAuth().catch(function() {
@@ -24,8 +24,8 @@ angular.module('frinvoiceApp').config(function($stateProvider, $urlRouterProvide
     });
   }
 
-  $locationProvider.html5Mode(true);
-
+  //$locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode({ enabled: true, requireBase: false });
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
@@ -39,14 +39,14 @@ angular.module('frinvoiceApp').config(function($stateProvider, $urlRouterProvide
 
   .state('register', {
     url: '/register',
-    templateUrl: '/views/register.html',
+    templateUrl: '/register/register.html',
     controller: 'AuthCtrl as authCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
 
   .state('login', {
     url: '/login',
-    templateUrl: '/views/login.html',
+    templateUrl: '/login/login.html',
     controller: 'AuthCtrl as authCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
@@ -69,7 +69,7 @@ angular.module('frinvoiceApp').config(function($stateProvider, $urlRouterProvide
     templateUrl: '/views/create-project.html',
     controller: 'ProjectsCtrl as projectsCtrl',
     resolve: {
-      projects: function (Projects){
+      projects: function(Projects) {
         // todo: projects should be for members of that company only!!
         return Projects.$loaded();
       },
@@ -271,9 +271,4 @@ angular.module('frinvoiceApp').config(function($stateProvider, $urlRouterProvide
 
 })
 
-.constant('FirebaseUrl', 'https://frinvoice.firebaseio.com/')
-
-// URL for payment server
-// TODO: chaneg this to be dynamic -- point to production and dev versions
-// of the server
-.constant('PAYMENT_URL', 'http://localhost:3000/');
+.constant('FirebaseUrl', 'https://trello-clone-1.firebaseIO.com/');

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:ProjectsCtrl
+ * @name trellocloneApp.controller:ProjectsCtrl
  * @description
  * # ProjectsCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('ProjectsCtrl', function ($state, Auth, Users, projects) {
     var projectsCtrl = this;
 

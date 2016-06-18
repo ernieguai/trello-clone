@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name frinvoiceApp.controller:TimesheetsCtrl
+ * @name trellocloneApp.controller:TimesheetsCtrl
  * @description
  * # TimesheetsCtrl
- * Controller of the frinvoiceApp
+ * Controller of the trellocloneApp
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .controller('TimesheetsCtrl', function (projects, timesheets) {
 
     var timesheetsCtrl = this;

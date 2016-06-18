@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name frinvoiceApp.timesheets
+ * @name trellocloneApp.timesheets
  * @description
  * # timesheets
- * Factory in the frinvoiceApp.
+ * Factory in the trellocloneApp.
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .factory('Timesheets', function ($firebaseArray, FirebaseUrl) {
     var timesheetsRef = new Firebase(FirebaseUrl + 'timesheets');
 

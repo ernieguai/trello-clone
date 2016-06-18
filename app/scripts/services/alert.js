@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name frinvoiceApp.Alert
+ * @name trellocloneApp.Alert
  * @description
  * # Alert
- * Factory in the frinvoiceApp.
+ * Factory in the trellocloneApp.
  */
-angular.module('frinvoiceApp')
+angular.module('trellocloneApp')
   .factory('alert', function ($rootScope, $window) {
 
     $rootScope.alerts = [];
