@@ -47,7 +47,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
   .state('login', {
     url: '/login',
     templateUrl: '/login/login.html',
-    controller: 'AuthCtrl as authCtrl',
+    controller: 'LoginCtrl as loginCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
 
