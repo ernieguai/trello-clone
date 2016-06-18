@@ -8,8 +8,10 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardsCtrl', function ($uibModal, $log) {
+  .controller('BoardsCtrl', function (teams, $uibModal, $log) {
     var boardsCtrl = this;
+
+    boardsCtrl.teams = teams;
 
     boardsCtrl.modals = {
       newTeam: {templateUrl: 'boards/boards.new-team.html', controller: 'NewTeamCtrl as newTeamCtrl'},

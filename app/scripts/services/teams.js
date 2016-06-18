@@ -8,16 +8,10 @@
  * Factory in the trellocloneApp.
  */
 angular.module('trellocloneApp')
-  .factory('Teams', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
+  .factory('Teams', function ($firebaseArray, FirebaseUrl) {
+    var ref = new Firebase(FirebaseUrl + 'teams');
+    var channels = $firebaseArray(ref);
 
     // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
+    return channels;
   });

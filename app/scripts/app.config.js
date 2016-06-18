@@ -33,7 +33,12 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     url: '/',
     templateUrl: '/boards/boards.html',
     controller: 'BoardsCtrl as boardsCtrl',
-    resolve: { auth: auth }
+    resolve: {
+      auth: auth,
+      teams: function (Teams) {
+        return Teams.$loaded();
+      }
+    }
   })
 
   .state('register', {
@@ -49,6 +54,16 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     controller: 'LoginCtrl as loginCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
+
+
+
+
+
+
+
+
+
+
 
   .state('projects', {
     url: '/projects',
@@ -101,172 +116,8 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     url: '/edit-credit-card',
     templateUrl: '/views/settings.edit-credit-card.html',
     controller: 'SettingsCtrl as settingsCtrl'
-  })
-
-  //-----------------------------------------
-  // TIMESHEETS VIEW AND SUBVIEWS
-  //-----------------------------------------
-
-  .state('timesheets', {
-    url: '/timesheets',
-    templateUrl: '/views/timesheets.html',
-    controller: 'TimesheetsCtrl as timesheetsCtrl',
-    resolve: {
-      auth: auth,
-      projects: function (Projects) {
-        // todo: projects should be for members of that company only!!
-        return Projects.$loaded();
-      },
-      timesheets: function (Timesheets) {
-        // TODO: need to refactor this - only return timesheets for user and company / client (return all clients!!) Let user choose client / project name when creating a new timesheet
-        // also return only for date range
-        // return Timesheets.forUsers(profile.$id).loaded();
-        return Timesheets.$loaded();
-      }
-      // timesheets: function ($stateParams, Timesheets) {
-      //   // TODO: need to refactor this, removing the stateParams
-      //   return Timesheets.forProject($stateParams.$channelId).$loaded();
-      // }
-    }
-  })
-
-  .state('timesheets.time', {
-    url: '/time',
-    templateUrl: '/views/timesheets.time.html',
-    controller: 'TimesheetsCtrl as timesheetsCtrl'
-  })
-
-  .state('timesheets.expenses', {
-    url: '/expenses',
-    templateUrl: '/views/timesheets.expenses.html',
-    controller: 'TimesheetsCtrl as timesheetsCtrl'
-  })
-
-  // .state('timesheets', {
-  //   //url: '/timesheets',
-  //   url: '/{projectId}/timesheets',
-  //   templateUrl: '/views/timesheets.html',
-  //   controller: 'TimesheetsCtrl as timesheetsCtrl',
-  //   resolve: {
-  //     timesheets: function ($stateParams, Timesheets) {
-  //       return Timesheets.forProject($stateParams.projectId).$loaded();
-  //     },
-  //     projectName: function ($stateParams, projects) {
-  //       return '#' + projects.$getRecord($stateParams.projectId).name;
-  //     }
-  //   }
-  // })
-
-  //-----------------------------------------
-  // REPORTS VIEW AND SUBVIEWS
-  //-----------------------------------------
-
-  .state('reports', {
-    url: '/reports',
-    templateUrl: '/views/reports.html',
-    controller: 'ReportsCtrl as reportsCtrl',
-    resolve: { auth: auth }
-  })
-
-  .state('reports.time', {
-    url: '/time',
-    templateUrl: '/views/reports.time.html',
-    controller: 'ReportsCtrl as reportsCtrl'
-  })
-
-  .state('reports.detailed-time', {
-    url: '/detailed-time',
-    templateUrl: '/views/reports.detailed-time.html',
-    controller: 'ReportsCtrl as reportsCtrl'
-  })
-
-  .state('reports.uninvoiced', {
-    url: '/uninvoiced',
-    templateUrl: '/views/reports.uninvoiced.html',
-    controller: 'ReportsCtrl as reportsCtrl'
-  })
-
-  .state('reports.expenses', {
-    url: '/expenses',
-    templateUrl: '/views/reports.expenses.html',
-    controller: 'ReportsCtrl as reportsCtrl'
-  })
-
-  //-----------------------------------------
-  // INVOICES VIEW AND SUBVIEWS
-  //-----------------------------------------
-
-  .state('invoices', {
-    url: '/invoices',
-    templateUrl: '/views/invoices.html',
-    controller: 'InvoicesCtrl as invoicesCtrl',
-    resolve: { auth: auth }
-  })
-
-  .state('invoices.overview', {
-    url: '/overview',
-    templateUrl: '/views/invoices.overview.html',
-    controller: 'InvoicesCtrl as invoicesCtrl'
-  })
-
-  .state('invoices.report', {
-    url: '/report',
-    templateUrl: '/views/invoices.report.html',
-    controller: 'InvoicesCtrl as invoicesCtrl'
-  })
-
-  .state('invoices.recurring', {
-    url: '/recurring',
-    templateUrl: '/views/invoices.recurring.html',
-    controller: 'InvoicesCtrl as invoicesCtrl'
-  })
-
-  .state('invoices.retainers', {
-    url: '/retainers',
-    templateUrl: '/views/invoices.retainers.html',
-    controller: 'InvoicesCtrl as invoicesCtrl'
-  })
-
-  .state('invoices.configure', {
-    url: '/configure',
-    templateUrl: '/views/invoices.configure.html',
-    controller: 'InvoicesCtrl as invoicesCtrl'
-  })
-
-  //-----------------------------------------
-  // MANAGE VIEW AND SUBVIEWS
-  //-----------------------------------------
-
-  .state('manage', {
-    url: '/manage',
-    templateUrl: '/views/manage.html',
-    controller: 'ManageCtrl as manageCtrl',
-    resolve: { auth: auth }
-  })
-
-  .state('manage.people', {
-    url: '/people',
-    templateUrl: '/views/manage.people.html',
-    controller: 'ManageCtrl as manageCtrl'
-  })
-
-  .state('manage.clients', {
-    url: '/clients',
-    templateUrl: '/views/manage.clients.html',
-    controller: 'ManageCtrl as manageCtrl'
-  })
-
-  .state('manage.tasks', {
-    url: '/tasks',
-    templateUrl: '/views/manage.tasks.html',
-    controller: 'ManageCtrl as manageCtrl'
-  })
-
-  .state('manage.expense-categories', {
-    url: '/expense-categories',
-    templateUrl: '/views/manage.expense-categories.html',
-    controller: 'ManageCtrl as manageCtrl'
   });
+
 
 })
 
