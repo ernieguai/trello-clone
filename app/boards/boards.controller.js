@@ -8,30 +8,40 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardsCtrl', function (teams, $uibModal, $log) {
+  .controller('BoardsCtrl', function (boards, teams, $uibModal, $log) {
     var boardsCtrl = this;
 
     boardsCtrl.teams = teams;
+    boardsCtrl.boards = boards;
+
+    function teamsResolve() {
+      return boardsCtrl.teams;
+    }
+
+    function boardsResolve() {
+      return boardsCtrl.boards;
+    }
+
     boardsCtrl.modals = {
-      newTeam: {templateUrl: 'boards/boards.new-team.html', controller: 'NewTeamCtrl as newTeamCtrl'},
-      newBoard: {templateUrl: 'boards/boards.new-board.html', controller: 'NewBoardCtrl as newBoardCtrl'}
+      newTeam: {
+        templateUrl: 'boards/boards.new-team.html',
+        controller: 'NewTeamCtrl as newTeamCtrl',
+        resolve: { teams: teamsResolve }
+      },
+      newBoard: {
+        templateUrl: 'boards/boards.new-board.html',
+        controller: 'NewBoardCtrl as newBoardCtrl',
+        resolve: { teams: teamsResolve, boards: boardsResolve }
+      }
     };
 
     boardsCtrl.open = function (template) {
      var modalInstance = $uibModal.open({
        animation: boardsCtrl.animationsEnabled,
        templateUrl: boardsCtrl.modals[template].templateUrl,
-       //controller: 'ModalInstanceCtrl',
        controller: boardsCtrl.modals[template].controller,
        size: 'sm',
-       resolve: {
-        //  items: function () {
-        //    return boardsCtrl.items;
-        //  },
-         teams: function () {
-           return boardsCtrl.teams;
-         }
-       }
+      resolve: boardsCtrl.modals[template].resolve
      });
 
      modalInstance.result.then(function (selectedItem) {
@@ -41,9 +51,4 @@ angular.module('trellocloneApp')
      });
    };
 
-    // boardsCtrl.awesomeThings = [
-    //   'HTML5 Boilerplate',
-    //   'AngularJS',
-    //   'Karma'
-    // ];
   });

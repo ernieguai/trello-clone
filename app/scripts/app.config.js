@@ -37,6 +37,9 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
       auth: auth,
       teams: function (Teams) {
         return Teams.$loaded();
+      },
+      boards: function (Boards) {
+        return Boards.$loaded();
       }
     }
   })

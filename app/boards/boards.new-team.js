@@ -13,11 +13,6 @@ angular.module('trellocloneApp')
 
     newTeamCtrl.teams = teams;
 
-    // newTeamCtrl.items = items;
-    // newTeamCtrl.selected = {
-    //   item: newTeamCtrl.items[0]
-    // };
-
     newTeamCtrl.newTeam = {
       name: '',
       description: ''
@@ -25,17 +20,9 @@ angular.module('trellocloneApp')
 
     newTeamCtrl.create = function () {
       newTeamCtrl.teams.$add(newTeamCtrl.newTeam).then(function () {
-        // newTeamCtrl.newTeam = {
-        //   name: '',
-        //   description: ''
-        // };
         $uibModalInstance.close();
       });
     };
-
-    // newTeamCtrl.ok = function () {
-    //   $uibModalInstance.close(newTeamCtrl.selected.item);
-    // };
 
     newTeamCtrl.cancel = function () {
       $uibModalInstance.dismiss('cancel');

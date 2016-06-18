@@ -6,16 +6,19 @@
 <br />
 <h3><i class="fa fa-user"></i> My Boards</h3>
 
-
 <div class="row">
-  <div class="col-sm-4">
-    <a class="board-card" href="#">Place for repeat of boards</a>
+<!-- {{(tweets | filter:{polarity:'Positive'}) -->
+  <div ng-repeat="board in boardsCtrl.boards | filter:{team:'private'}" class="col-sm-4">
+    <a class="board-card" href="#">{{ board.title }}</a>
   </div>
+
   <div class="col-sm-4">
-    <a class="board-card" href="#" ng-click="boardsCtrl.open('newBoard')">Create a new board</a>
+    <a class="board-card new-board-card" href="#" ng-click="boardsCtrl.open('newBoard')">Create a new board...</a>
   </div>
+
 </div>
 <br />
+
 
 <h3 ng-show="!(boardsCtrl.teams| filter:nameText).length"><i class="fa fa-users"></i> Team Boards</h3>
 
@@ -23,11 +26,11 @@
   <h3><i class="fa fa-users"></i> {{ team.name }}</h3>
 
   <div class="row">
-    <div class="col-sm-4">
-      <a class="board-card" href="#">Place for repeat of boards</a>
+    <div ng-repeat="board in boardsCtrl.boards | filter:{team:team.name}" class="col-sm-4">
+      <a class="board-card" href="#">{{ board.title }}</a>
     </div>
     <div class="col-sm-4">
-      <a class="board-card" ng-click="boardsCtrl.open('newBoard')" href="#">Create a new board</a>
+      <a class="board-card new-board-card" ng-click="boardsCtrl.open('newBoard')" href="#">Create a new board...</a>
     </div>
   </div>
   <br />
