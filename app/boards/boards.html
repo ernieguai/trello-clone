@@ -1,4 +1,27 @@
 <h3 class="boards-h3"><i class="fa fa-star-o"></i> Starred Boards</h3>
+
+<div class="row">
+
+  <div ng-repeat="board in boardsCtrl.boards | filter:{starred:true}" class="col-sm-4">
+    <div class="row">
+      <div class="col-xs-12">
+        <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
+          <div class="well">
+            <div class="col-xs-10">{{ board.title }}</div>
+            <div class="col-xs-2"><i class="fa fa-star-o" ng-class="{ 'starred-board': board.starred }" ng-click="boardsCtrl.starBoard(board)"></i></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+      <a class="board" href="#" ng-click="boardsCtrl.open('newBoard')"><div class="well">Create a new board...</div></a>
+  </div>
+
+</div>
+
+
 <div class="row boards">
   <div class="col-sm-4"><a href="#">Place for repeat of starred boards</a></div>
 </div>
@@ -14,7 +37,7 @@
         <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
           <div class="well">
             <div class="col-xs-10">{{ board.title }}</div>
-            <div class="col-xs-2"><i class="fa fa-star-o"></i></div>
+            <div class="col-xs-2"><i class="fa fa-star-o" ng-class="{ 'starred-board': board.starred }" ng-click="boardsCtrl.starBoard(board)"></i></div>
           </div>
         </a>
       </div>
@@ -36,13 +59,13 @@
 
   <div class="row">
 
-    <div ng-repeat="board in boardsCtrl.boards | filter:{team:'private'}" class="col-sm-4">
+    <div ng-repeat="board in boardsCtrl.boards | filter:{team:team.name}" class="col-sm-4">
       <div class="row">
         <div class="col-xs-12">
           <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
             <div class="well">
               <div class="col-xs-10">{{ board.title }}</div>
-              <div class="col-xs-2"><i class="fa fa-star-o"></i></div>
+              <div class="col-xs-2"><i class="fa fa-star-o" ng-class="{ 'starred-board': board.starred }" ng-click="boardsCtrl.starBoard(board)"></i></div>
             </div>
           </a>
         </div>
@@ -60,3 +83,8 @@
 
 <br />
 <a ng-click="boardsCtrl.open('newTeam')" href="#">Create a new team...</a>
+
+<br />
+<br />
+<br />
+<br />

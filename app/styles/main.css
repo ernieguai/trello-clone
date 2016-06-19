@@ -164,3 +164,8 @@ a.user-brand:hover, a:focus {
 .boards-h3 {
   font-size: 18px;
 }
+
+.starred-board {
+  color: #fff246 !important;
+  font-weight: bold !important;
+}

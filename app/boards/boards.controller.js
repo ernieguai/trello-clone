@@ -22,6 +22,21 @@ angular.module('trellocloneApp')
       return boardsCtrl.boards;
     }
 
+    boardsCtrl.starBoard = function(board) {
+      console.log("boards", boards);
+      console.log("board id", board.$id);
+      console.log("index of board: ", boards.$indexFor(board.$id));
+      var boardIndex = boards.$indexFor(board.$id);
+      console.log("board info", boardsCtrl.boards[boardIndex]);
+      boardsCtrl.boards[boardIndex].foo = "bar";
+      if (boardsCtrl.boards[boardIndex].starred === true) {
+        boardsCtrl.boards[boardIndex].starred = false;
+      } else {
+        boardsCtrl.boards[boardIndex].starred = true;
+      }
+      boardsCtrl.boards.$save(boardIndex);
+    };
+
     boardsCtrl.modals = {
       newTeam: {
         templateUrl: 'boards/boards.new-team.html',
