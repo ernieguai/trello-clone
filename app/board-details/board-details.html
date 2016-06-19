@@ -7,14 +7,9 @@
   </div>
 
 </div>
-
 <br />
 
 <div class="row row-horizon">
-
-  <div ng-repeat="board in boardsCtrl.boards | filter:{team:'private'}" class="col-xs-4 col-md-3">
-    <a ui-sref="board-details({ boardId: board.$id })"><div class="well board user-board">{{ board.title }}</div></a>
-  </div>
 
   <div ng-repeat="list in boardDetailsCtrl.lists" class="col-sm-4 col-md-3">
     <div class="panel panel-info">
@@ -22,7 +17,7 @@
         <h3 class="panel-title">{{ list.title }}</h3>
       </div>
 
-      <div class="panel-body" style="height: 100%; overflow: scroll;">
+      <div class="panel-body">
         <div ng-repeat="card in boardDetailsCtrl.cards | filter:{list:list.$id}" class="well well-sm">{{ card.title }}</div>
 
         <div class="">
