@@ -1,37 +1,58 @@
-<h3><i class="fa fa-star-o"></i> Starred Boards</h3>
+<h3 class="boards-h3"><i class="fa fa-star-o"></i> Starred Boards</h3>
 <div class="row boards">
   <div class="col-sm-4"><a href="#">Place for repeat of starred boards</a></div>
 </div>
 
 <br />
-<h3><i class="fa fa-user"></i> My Boards</h3>
+<h3 class="boards-h3"><i class="fa fa-user"></i> My Boards</h3>
 
 <div class="row">
-<!-- {{(tweets | filter:{polarity:'Positive'}) -->
+
   <div ng-repeat="board in boardsCtrl.boards | filter:{team:'private'}" class="col-sm-4">
-    <a class="board-card" href="#">{{ board.title }}</a>
+    <div class="row">
+      <div class="col-xs-12">
+        <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
+          <div class="well">
+            <div class="col-xs-10">{{ board.title }}</div>
+            <div class="col-xs-2"><i class="fa fa-star-o"></i></div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
   <div class="col-sm-4">
-    <a class="board-card new-board-card" href="#" ng-click="boardsCtrl.open('newBoard')">Create a new board...</a>
+      <a class="board" href="#" ng-click="boardsCtrl.open('newBoard')"><div class="well">Create a new board...</div></a>
   </div>
 
 </div>
 <br />
 
 
-<h3 ng-show="!(boardsCtrl.teams| filter:nameText).length"><i class="fa fa-users"></i> Team Boards</h3>
+<h3 class="boards-h3" ng-show="!(boardsCtrl.teams| filter:nameText).length"><i class="fa fa-users"></i> Team Boards</h3>
 
 <div ng-repeat="team in boardsCtrl.teams| filter:nameText">
-  <h3><i class="fa fa-users"></i> {{ team.name }}</h3>
+  <h3 class="boards-h3"><i class="fa fa-users"></i> {{ team.name }}</h3>
 
   <div class="row">
-    <div ng-repeat="board in boardsCtrl.boards | filter:{team:team.name}" class="col-sm-4">
-      <a class="board-card" href="#">{{ board.title }}</a>
+
+    <div ng-repeat="board in boardsCtrl.boards | filter:{team:'private'}" class="col-sm-4">
+      <div class="row">
+        <div class="col-xs-12">
+          <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
+            <div class="well">
+              <div class="col-xs-10">{{ board.title }}</div>
+              <div class="col-xs-2"><i class="fa fa-star-o"></i></div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
+
     <div class="col-sm-4">
-      <a class="board-card new-board-card" ng-click="boardsCtrl.open('newBoard')" href="#">Create a new board...</a>
+        <a class="board" href="#" ng-click="boardsCtrl.open('newBoard')"><div class="well">Create a new board...</div></a>
     </div>
+
   </div>
   <br />
 
@@ -39,5 +60,3 @@
 
 <br />
 <a ng-click="boardsCtrl.open('newTeam')" href="#">Create a new team...</a>
-
-<br />

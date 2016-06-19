@@ -103,22 +103,22 @@ CUSTOM STYLES
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/*html {
   position: relative;
   min-height: 100%;
-}
-body {
+}*/
+/*body {*/
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
+  /*margin-bottom: 60px;*/
+/*}*/
+/*.footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 100%;*/
   /* Set the fixed height of the footer here */
-  height: 60px;
+  /*height: 60px;
   background-color: #f5f5f5;
-}
+}*/
 
 .alert-div {
   padding-top: 62px;
@@ -143,18 +143,24 @@ body {
     z-index:3;
 }
 
-
-.board-card {
-  background-color: #0079BF !important;
-  padding: 20px;
-  position: relative;
-  display: block;
-  margin-bottom: .75rem;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: .25rem;
+.board div.well {
+  height: 96px;
 }
 
-.new-board-card {
-  background-color: rgb(226, 228, 230) !important;
+.user-board div.well {
+  background-color: #0079BF !important;
+  color: #fcf8e3;
+}
+
+a.user-brand:hover, a:focus {
+    color: #79a736;
+    text-decoration: underline;
+}
+
+.board-title {
+  font-size: 16px;
+}
+
+.boards-h3 {
+  font-size: 18px;
 }

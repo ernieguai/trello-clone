@@ -44,6 +44,34 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     }
   })
 
+  .state('board-details', {
+    url: '/{boardId}/board-details',
+    templateUrl: '/board-details/board-details.html',
+    controller: 'BoardDetailsCtrl as boardDetailsCtrl',
+    resolve: {
+      auth: auth,
+      profile: profile,
+      teams: function (Teams) {
+        return Teams.$loaded();
+      },
+      boards: function (Boards) {
+        return Boards.$loaded();
+      },
+      lists: function($stateParams, Lists) {
+        return Lists.forBoard($stateParams.boardId).$loaded();
+      },
+      // cards: function(Cards, profile, $stateParams) {
+      //   return Cards.forUser($stateParams.uid, profile.$id).loaded();
+      // },
+      cards: function (Cards) {
+        return Cards.all.$loaded();
+      },
+      boardTitle: function($stateParams, Boards) {
+        return Boards.$getRecord($stateParams.boardId).title;
+      }
+    }
+  })
+
   .state('register', {
     url: '/register',
     templateUrl: '/register/register.html',

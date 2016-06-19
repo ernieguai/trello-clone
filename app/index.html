@@ -10,6 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-horizon/bootstrap-horizon.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -27,11 +28,12 @@
 
     <div class="alert-div" ng-include="'views/alert.html'"></div>
 
-    <div class="container">
-      <div ui-view></div>
-    </div>
+    <div ui-view></div>
 
-    <div ng-include="'layout/footer.html'"></div>
+    <!-- <br /> -->
+    <!-- <br /> -->
+
+    <!-- <div ng-include="'layout/footer.html'"></div> -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -80,20 +82,25 @@
         <script src="scripts/controllers/settings.js"></script>
 
 
-        <!--  Layout -->
+        <!-- Layout -->
         <script src="layout/header.controller.js"></script>
         <script src="layout/footer.controller.js"></script>
 
-        <!--  Boards -->
+        <!-- Boards -->
         <script src="boards/boards.controller.js"></script>
         <script src="boards/boards.new-board.js"></script>
         <script src="boards/boards.new-team.js"></script>
 
-        <!--  Login -->
+        <!-- Board details -->
+        <script src="board-details/board-details.controller.js"></script>
+
+        <!-- Login -->
         <script src="login/login.controller.js"></script>
 
         <!-- Register -->
         <script src="register/register.controller.js"></script>
+        <script src="scripts/services/lists.js"></script>
+        <script src="scripts/services/cards.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,0 +1,63 @@
+<div class="row">
+
+  <div class="col-sm-12">
+    <a href="#" class="btn btn-info board-title">{{ boardDetailsCtrl.boardTitle }}</a>
+    <a href="#" class="btn btn-info"><i class="fa fa-star-o"></i></a>
+    <a href="#" class="btn btn-info"><i class="fa fa-lock"></i> Private</a>
+  </div>
+
+</div>
+
+<br />
+
+<div class="row row-horizon">
+
+  <div ng-repeat="board in boardsCtrl.boards | filter:{team:'private'}" class="col-xs-4 col-md-3">
+    <a ui-sref="board-details({ boardId: board.$id })"><div class="well board user-board">{{ board.title }}</div></a>
+  </div>
+
+  <div ng-repeat="list in boardDetailsCtrl.lists" class="col-sm-4 col-md-3">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ list.title }}</h3>
+      </div>
+
+      <div class="panel-body" style="height: 100%; overflow: scroll;">
+        <div ng-repeat="card in boardDetailsCtrl.cards | filter:{list:list.$id}" class="well well-sm">{{ card.title }}</div>
+
+        <div class="">
+          <form name="newCard" novalidate>
+            <fieldset>
+              <div class="form-group">
+                <textarea name="title" ng-model="list.newCard.title" type="text" class="form-control input-sm" placeholder='Add a card...' required></textarea>
+              </div>
+
+              <div class="form-group">
+                <button ng-disabled="newCard.$invalid" class="btn btn-sm btn-primary pull-left" ng-click="boardDetailsCtrl.addNewCard(list)">Add</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-sm-4 col-md-3">
+    <div class="well well-sm">
+      <form name="newList" novalidate>
+        <fieldset>
+          <div class="form-group">
+            <input name="title" ng-model="boardDetailsCtrl.newList.title" type="text" class="form-control input-sm" placeholder='Add a list...' required>
+          </div>
+
+          <div class="form-group">
+            <button ng-disabled="newList.$invalid" class="btn btn-sm btn-primary pull-left" ng-click="boardDetailsCtrl.addNewList()">Create</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+</div>

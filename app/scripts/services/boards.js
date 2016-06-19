@@ -9,8 +9,23 @@
  */
 angular.module('trellocloneApp')
   .factory('Boards', function ($firebaseArray, $firebaseObject, FirebaseUrl) {
-    var ref = new Firebase(FirebaseUrl + 'boards');
-    var boards = $firebaseArray(ref);
+    var boardsRef = new Firebase(FirebaseUrl + 'boards');
+    var boards = $firebaseArray(boardsRef);
+
+    // return {
+    //   forBoard: function (boardId) {
+    //     return $firebaseArray(boardsRef).child(boardId);
+    //   },
+    //   forUser: function (userId) {
+    //     return $firebaseArray(boardsRef).child(userId);
+    //   },
+    //   forTeam: function (teamId) {
+    //     return $firebaseArray(boardsRef).child(teamId);
+    //   },
+    //   boards: function () {
+    //     return $firebaseArray(boardsRef);
+    //   }
+    // };
 
     return boards;
 
