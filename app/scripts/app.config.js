@@ -46,7 +46,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
 
   .state('board-details', {
     url: '/{boardId}/board-details',
-    templateUrl: '/board-details/board-details.html',
+    templateUrl: '/board-details-2/board-details-2.html',
     controller: 'BoardDetailsCtrl as boardDetailsCtrl',
     resolve: {
       auth: auth,

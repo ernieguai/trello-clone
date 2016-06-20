@@ -17,8 +17,13 @@
         <h3 class="panel-title">{{ list.title }}</h3>
       </div>
 
+
+
       <div class="panel-body">
+
         <div ng-repeat="card in boardDetailsCtrl.cards | filter:{list:list.$id}" class="well well-sm">{{ card.title }}</div>
+
+
 
         <div class="">
           <form name="newCard" novalidate>
@@ -38,6 +43,8 @@
 
     </div>
   </div>
+
+
 
   <div class="col-sm-4 col-md-3">
     <div class="well well-sm">

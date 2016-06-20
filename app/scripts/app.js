@@ -9,4 +9,4 @@
  * Main module of the application.
  */
 angular
-  .module('trellocloneApp', ['firebase', 'ui.router', 'angular-md5', 'ui.bootstrap', 'angular-stripe', 'credit-cards']);
+  .module('trellocloneApp', ['firebase', 'ui.router', 'ui.bootstrap', 'dndLists']);

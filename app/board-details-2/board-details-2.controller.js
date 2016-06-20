@@ -8,8 +8,10 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardDetailsCtrl2', function (profile, teams, boards, lists, cards, boardTitle, $uibModal, $log) {
+  // .controller('BoardDetailsCtrl', function ($scope, profile, teams, boards, lists, cards, boardTitle, $uibModal, $log) {
+  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, lists, cards, $scope) {
   // .controller('BoardDetailsCtrl', function (lists, boardTitle, $uibModal, $log) {
+
     var boardDetailsCtrl = this;
 
     boardDetailsCtrl.lists = lists;
@@ -20,10 +22,60 @@ angular.module('trellocloneApp')
       title: ''
     };
 
-    // var list = [];
-    // boardDetailsCtrl.newCard = {
-    //   title: ''
-    // };
+
+    // stage data here to be moved...
+    boardDetailsCtrl.models = {
+      selected: null,
+      // lists: {"A": [], "B": []}
+      cards: boardDetailsCtrl.cards
+    };
+
+    $scope.moveCallback = function($index) {
+      console.log("move $index: ", $index);
+    };
+
+    $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+      console.log("ALL CARDS: ", boardDetailsCtrl.cards);
+
+      // console.log("event: ", event);
+      // console.log("index: ", index);
+      // console.log("item: ", item);
+      // console.log("external: ", external);
+      // console.log("type: ", type);
+      // console.log("allowedType: ", allowedType);
+      var originCardIndex = boardDetailsCtrl.cards.$indexFor(item.$id);
+      console.log("Origin Card Index", originCardIndex);
+      var targetListIndex = event.path[3].id;
+      console.log("Target List Index", targetListIndex);
+
+      // if (external) {
+      //     if (allowedType === 'itemType' && !item.label) return false;
+      //     if (allowedType === 'containerType' && !angular.isArray(item)) return false;
+      // }
+
+
+      var originListIndex = item.list;
+      console.log("Origin List Index", originListIndex);
+
+      //var droppedList = "";
+      // console.log("droppedList", droppedList);
+
+      boardDetailsCtrl.cards[originCardIndex].list = targetListIndex;
+
+      boardDetailsCtrl.cards.$save(originCardIndex);
+      // need to reload the page after this?
+
+      // return item;
+      return true;
+   };
+
+   $scope.insertedCallback = function(index, event) {
+     console.log("Inserted callback index: ", index);
+     console.log("Inserted callback event: ", event);
+     console.log("Inserted callback event Path: ", event.path[3].id);
+   };
+
+
 
     boardDetailsCtrl.addNewList = function () {
       boardDetailsCtrl.lists.$add({
@@ -36,7 +88,6 @@ angular.module('trellocloneApp')
     };
 
     boardDetailsCtrl.addNewCard = function (list) {
-      console.log("new card title: " + list.newCard.title);
       boardDetailsCtrl.cards.$add({
         uid: profile.$id,
         list: list.$id,
@@ -46,6 +97,25 @@ angular.module('trellocloneApp')
         list.newCard = { title: '' };
       });
     };
+
+    // Generate initial model
+    // for (var i = 1; i <= 3; ++i) {
+    //   boardDetailsCtrl.models.cards.A.push({label: "Item A" + i});
+    //   boardDetailsCtrl.models.cards.B.push({label: "Item B" + i});
+    // }
+
+    // Model to JSON for demo purpose
+    // $scope.$watch('boardDetailsCtrl.models', function(model) {
+    //   $scope.modelAsJson = angular.toJson(model, true);
+    // }, true);
+
+    // boardDetailsCtrl.$watch
+
+
+
+
+
+
 
     // boardDetailsCtrl.addNewCard = function (list) {
     //

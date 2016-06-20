@@ -27,8 +27,6 @@ angular.module('trellocloneApp')
       console.log("board id", board.$id);
       console.log("index of board: ", boards.$indexFor(board.$id));
       var boardIndex = boards.$indexFor(board.$id);
-      console.log("board info", boardsCtrl.boards[boardIndex]);
-      boardsCtrl.boards[boardIndex].foo = "bar";
       if (boardsCtrl.boards[boardIndex].starred === true) {
         boardsCtrl.boards[boardIndex].starred = false;
       } else {
