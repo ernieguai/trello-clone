@@ -8,8 +8,8 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardDetailsCtrl2', function (profile, teams, boards, lists, cards, boardTitle, $uibModal, $log) {
-  // .controller('BoardDetailsCtrl', function (lists, boardTitle, $uibModal, $log) {
+  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, lists, cards, $scope) {
+
     var boardDetailsCtrl = this;
 
     boardDetailsCtrl.lists = lists;
@@ -20,10 +20,50 @@ angular.module('trellocloneApp')
       title: ''
     };
 
-    // var list = [];
-    // boardDetailsCtrl.newCard = {
-    //   title: ''
-    // };
+    // stage data here to be moved...
+    boardDetailsCtrl.models = {
+      selected: null,
+      cards: boardDetailsCtrl.cards
+    };
+
+    $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+
+      var originCardIndex = boardDetailsCtrl.cards.$indexFor(item.$id);
+      var originListIndex = item.list;
+
+      var targetCardIndex = index;
+      var targetListIndex = event.path[3].id;
+
+      // Move the card into new list
+      boardDetailsCtrl.cards[originCardIndex].list = targetListIndex;
+
+      // update the listNumber (position) for the new card
+      boardDetailsCtrl.cards[originCardIndex].listNumber = targetCardIndex;
+
+      // increment the list number total for the target list (+1)
+      var originlistId = boardDetailsCtrl.lists.$indexFor(targetListIndex);
+      boardDetailsCtrl.lists[originlistId].cardsInList = boardDetailsCtrl.lists[originlistId].cardsInList + 1;
+      boardDetailsCtrl.lists.$save(originlistId);
+
+      // increment the list number total for the origin list (-1)
+      var listIndex = boardDetailsCtrl.lists.$indexFor(originListIndex);
+      boardDetailsCtrl.lists[listIndex].cardsInList = boardDetailsCtrl.lists[listIndex].cardsInList - 1;
+      boardDetailsCtrl.lists.$save(listIndex);
+
+      // TODO: check this function for errors
+      function logArrayElements(element, index, array) {
+        if (element.list === targetListIndex) {
+          // update list number for the rest of the target list if the list number is >= target number
+          if (element.listNumber >= targetCardIndex) {
+            element.listNumber = element.listNumber + 1;
+          }
+        }
+      }
+
+      boardDetailsCtrl.cards.forEach(logArrayElements);
+      boardDetailsCtrl.cards.$save(originCardIndex);
+      return true;
+   };
 
     boardDetailsCtrl.addNewList = function () {
       boardDetailsCtrl.lists.$add({
@@ -36,80 +76,23 @@ angular.module('trellocloneApp')
     };
 
     boardDetailsCtrl.addNewCard = function (list) {
-      console.log("new card title: " + list.newCard.title);
+
+      var cardsInList = list.cardsInList ? list.cardsInList : 0;
+      var listNumber = cardsInList + 1;
+      var listIndex = boardDetailsCtrl.lists.$indexFor(list.$id);
+
+      boardDetailsCtrl.lists[listIndex].cardsInList = listNumber;
+      boardDetailsCtrl.lists.$save(listIndex)
+
       boardDetailsCtrl.cards.$add({
         uid: profile.$id,
         list: list.$id,
         title: list.newCard.title,
-        timestamp: Firebase.ServerValue.TIMESTAMP
+        timestamp: Firebase.ServerValue.TIMESTAMP,
+        listNumber: listNumber
       }).then(function () {
         list.newCard = { title: '' };
       });
     };
-
-    // boardDetailsCtrl.addNewCard = function (list) {
-    //
-    //   console.log("list key: " + list.$id);
-    //   console.log("list title: " + list.title);
-    //   console.log("list timestamp: " + list.timestamp);
-    //   // console.log("list details: " + boardDetailsCtrl.lists.$getRecord(list.$id));
-    //
-    //   // add new card to a list (save the list)
-    //   // need the list id
-    //
-    //   // boardDetailsCtrl.lists[id].
-    //
-    //   // boardDetailsCtrl.lists[list.$id].$save({
-    //   //list.$id.$add({
-    //   list.$save({
-    //     //uid: profile.$id,
-    //     //title: boardDetailsCtrl.newCard.title,
-    //     card: {
-    //       title: "This is a test card",
-    //       timestamp: Firebase.ServerValue.TIMESTAMP
-    //     },
-    //     //title: list.newCard.title,
-    //     //timestamp: Firebase.ServerValue.TIMESTAMP
-    //   }).then(function () {
-    //     boardDetailsCtrl.newCard = { title: '' };
-    //   });
-    // };
-
-    // function teamsResolve() {
-    //   return boardDetailsCtrl.teams;
-    // }
-    //
-    // function boardsResolve() {
-    //   return boardDetailsCtrl.boards;
-    // }
-    //
-    // boardDetailsCtrl.modals = {
-    //   newTeam: {
-    //     templateUrl: 'boards/boards.new-team.html',
-    //     controller: 'NewTeamCtrl as newTeamCtrl',
-    //     resolve: { teams: teamsResolve }
-    //   },
-    //   newBoard: {
-    //     templateUrl: 'boards/boards.new-board.html',
-    //     controller: 'NewBoardCtrl as newBoardCtrl',
-    //     resolve: { teams: teamsResolve, boards: boardsResolve }
-    //   }
-    // };
-    //
-    // boardDetailsCtrl.open = function (template) {
-    //   var modalInstance = $uibModal.open({
-    //     animation: boardDetailsCtrl.animationsEnabled,
-    //     templateUrl: boardDetailsCtrl.modals[template].templateUrl,
-    //     controller: boardDetailsCtrl.modals[template].controller,
-    //     size: 'sm',
-    //     resolve: boardDetailsCtrl.modals[template].resolve
-    //   });
-    //
-    //   modalInstance.result.then(function (selectedItem) {
-    //     boardDetailsCtrl.selected = selectedItem;
-    //   }, function () {
-    //     $log.info('Modal dismissed at: ' + new Date());
-    //   });
-    // };
 
   });
