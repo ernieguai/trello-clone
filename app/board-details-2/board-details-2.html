@@ -26,16 +26,15 @@
 
           <ul dnd-list="list"
               dnd-drop="dropCallback(event, index, item, external, type, 'cardType')"
-              dnd-inserted="insertedCallback(index, event)"
           >
-              <li ng-repeat="card in boardDetailsCtrl.models.cards | filter:{list:list.$id}"
+              <li ng-repeat="card in boardDetailsCtrl.models.cards | filter:{list:list.$id} | orderBy: 'listNumber'"
                   dnd-type="cardType"
                   dnd-draggable="card"
                   dnd-effect-allowed="move"
                   dnd-selected="models.selected = card"
                   ng-class="{'selected': models.selected === card}"
                   >
-                  {{ card.title }}
+                  Number: {{ card.listNumber }} Title: {{ card.title }}
               </li>
 
               <li>
