@@ -68,7 +68,10 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
       },
       boardTitle: function($stateParams, Boards) {
         return Boards.$getRecord($stateParams.boardId).title;
-      }
+      },
+      board: function($stateParams, Boards) {
+        return Boards.$getRecord($stateParams.boardId);
+      },
     }
   })
 

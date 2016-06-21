@@ -8,7 +8,7 @@
         <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
           <div class="well">
             <div class="col-xs-10">{{ board.title }}</div>
-            <div class="col-xs-2"><i class="fa fa-star-o" ng-class="{ 'starred-board': board.starred }" ng-click="boardsCtrl.starBoard(board)"></i></div>
+            <div class="col-xs-2"><i class="fa" ng-class="board.starred ? 'starred-board fa-star' : 'fa-star-o'" ng-click="boardsCtrl.starBoard(board)"></i></div>
           </div>
         </a>
       </div>
@@ -19,11 +19,6 @@
       <a class="board" href="#" ng-click="boardsCtrl.open('newBoard')"><div class="well">Create a new board...</div></a>
   </div>
 
-</div>
-
-
-<div class="row boards">
-  <div class="col-sm-4"><a href="#">Place for repeat of starred boards</a></div>
 </div>
 
 <br />
@@ -37,7 +32,7 @@
         <a class="board user-board" ui-sref="board-details({ boardId: board.$id })">
           <div class="well">
             <div class="col-xs-10">{{ board.title }}</div>
-            <div class="col-xs-2"><i class="fa fa-star-o" ng-class="{ 'starred-board': board.starred }" ng-click="boardsCtrl.starBoard(board)"></i></div>
+            <div class="col-xs-2"><i class="fa" ng-class="board.starred ? 'starred-board fa-star' : 'fa-star-o'" ng-click="boardsCtrl.starBoard(board)"></i></div>
           </div>
         </a>
       </div>

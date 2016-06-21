@@ -8,10 +8,12 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, lists, cards, $scope) {
+  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, board, lists, cards, $scope) {
 
     var boardDetailsCtrl = this;
 
+    boardDetailsCtrl.boards = boards;
+    boardDetailsCtrl.board = board;
     boardDetailsCtrl.lists = lists;
     boardDetailsCtrl.cards = cards;
     boardDetailsCtrl.boardTitle = boardTitle;
@@ -24,6 +26,16 @@ angular.module('trellocloneApp')
     boardDetailsCtrl.models = {
       selected: null,
       cards: boardDetailsCtrl.cards
+    };
+
+    boardDetailsCtrl.starBoard = function(board) {
+      var boardIndex = boardDetailsCtrl.boards.$indexFor(board.$id);
+      if (boardDetailsCtrl.boards[boardIndex].starred === true) {
+        boardDetailsCtrl.boards[boardIndex].starred = false;
+      } else {
+        boardDetailsCtrl.boards[boardIndex].starred = true;
+      }
+      boardDetailsCtrl.boards.$save(boardIndex);
     };
 
     $scope.dropCallback = function(event, index, item, external, type, allowedType) {
@@ -98,7 +110,8 @@ angular.module('trellocloneApp')
       boardDetailsCtrl.lists.$add({
         uid: profile.$id,
         title: boardDetailsCtrl.newList.title,
-        timestamp: Firebase.ServerValue.TIMESTAMP
+        timestamp: Firebase.ServerValue.TIMESTAMP,
+        cardsInList: 0
       }).then(function () {
         boardDetailsCtrl.newList = { title: '' };
       });

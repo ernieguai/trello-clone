@@ -120,9 +120,16 @@ CUSTOM STYLES
 }
 
 .user-board div.well {
-  background-color: #0079BF !important;
+  background-color: #31b0d5;
+  border-color: #269abc;
+  /*background-color: #0079BF !important;*/
   color: #fcf8e3;
 }
+
+.user-board div.well:hover {
+  background-color: #1b8dbb;
+}
+
 
 a.user-brand:hover, a:focus {
     color: #79a736;
@@ -130,11 +137,7 @@ a.user-brand:hover, a:focus {
 }
 
 .board-title {
-  font-size: 16px;
-}
-
-.boards-h3 {
-  font-size: 18px;
+  vertical-align: middle;
 }
 
 .starred-board {
