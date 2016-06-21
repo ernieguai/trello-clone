@@ -8,7 +8,7 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, board, lists, cards) {
+  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, board, lists, cards, $uibModal) {
     var boardDetailsCtrl = this;
 
     boardDetailsCtrl.boards = boards;
@@ -26,6 +26,28 @@ angular.module('trellocloneApp')
       selected: null,
       cards: boardDetailsCtrl.cards
     };
+
+    boardDetailsCtrl.editCard = function (card) {
+     var modalInstance = $uibModal.open({
+       animation: boardDetailsCtrl.animationsEnabled,
+       templateUrl: 'scripts/board-details/board-details-edit-card.html',
+       controller: 'EditCardCtrl as editCardCtrl',
+       size: 'md',
+      resolve: {
+        cards: function () {
+          return boardDetailsCtrl.cards;
+        },
+        profile: function () {
+          return boardDetailsCtrl.profile;
+        },
+        card: card
+      }
+     });
+
+     modalInstance.result.then(function (selectedItem) {
+       boardDetailsCtrl.selected = selectedItem;
+     });
+   };
 
     boardDetailsCtrl.dropCallback = function(event, index, item, external, type, allowedType) {
 

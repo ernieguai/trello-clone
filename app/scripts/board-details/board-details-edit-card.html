@@ -1,0 +1,28 @@
+<form name="newBoard" novalidate>
+  <fieldset>
+
+    <legend class="modal-header">
+      <span class="vertically-centered"><h3 class="modal-title text-muted pull-left">Edit Card -- {{ editCardCtrl.card.title }}</h3></span>
+      <button class="btn btn-danger pull-right" ng-click="editCardCtrl.delete()">Delete Card</button>
+    </legend>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="board-title">Edit Title</label>
+        <input id="board-title" name="title" ng-model="editCardCtrl.editCard.title" type="text" class="form-control input-sm" placeholder='New Card Title' required>
+      </div>
+
+      <div class="form-group">
+        <label for="board-description">Edit Description</label>
+        <input id="board-description" name="description" ng-model="editCardCtrl.editCard.description" type="text" class="form-control input-sm" placeholder='New Card Description'>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button ng-disabled="newBoard.$invalid" class="btn btn-primary pull-left" ng-click="editCardCtrl.save()">Save</button>
+        <button class="btn btn-link text-muted pull-right" ng-click="editCardCtrl.cancel()">Cancel</button>
+    </div>
+
+  </fieldset>
+</form>

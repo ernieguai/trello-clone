@@ -193,3 +193,7 @@ a.user-brand:hover, a:focus {
     background-color: #dff0d8;
     color: #3c763d;
 }
+
+.cardHover:hover {
+  background-color: #f8f5f0 !important;
+}
