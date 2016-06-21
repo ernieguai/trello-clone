@@ -24,9 +24,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-include="'layout/header.html'"></div>
+    <div ng-include="'scripts/layout/header.html'"></div>
 
-    <div class="alert-div" ng-include="'alerts/alert.html'"></div>
+    <div class="alert-div" ng-include="'scripts/alerts/alert.html'"></div>
 
     <div class="container-fluid">
       <div ui-view></div>
@@ -34,9 +34,6 @@
 
     <!-- <br /> -->
     <!-- <br /> -->
-
-    <!-- <div ng-include="'layout/footer.html'"></div> -->
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -72,36 +69,36 @@
         <script src="scripts/app.config.js"></script>
 
         <!--  Services -->
-        <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/users.js"></script>
-        <script src="scripts/services/boards.js"></script>
-        <script src="scripts/services/teams.js"></script>
-        <script src="scripts/services/lists.js"></script>
-        <script src="scripts/services/cards.js"></script>
+        <script src="scripts/services/auth.service.js"></script>
+        <script src="scripts/services/users.service.js"></script>
+        <script src="scripts/services/boards.service.js"></script>
+        <script src="scripts/services/teams.service.js"></script>
+        <script src="scripts/services/lists.service.js"></script>
+        <script src="scripts/services/cards.service.js"></script>
 
         <!-- Layout -->
-        <script src="layout/header.controller.js"></script>
-        <script src="layout/footer.controller.js"></script>
+        <script src="scripts/layout/header.controller.js"></script>
+        <script src="scripts/layout/footer.controller.js"></script>
 
         <!--  Alerts -->
-        <script src="alerts/alert.service.js"></script>
+        <script src="scripts/alerts/alert.service.js"></script>
 
         <!-- Boards -->
-        <script src="boards/boards.controller.js"></script>
-        <script src="boards/boards.new-board.js"></script>
-        <script src="boards/boards.new-team.js"></script>
+        <script src="scripts/boards/boards.controller.js"></script>
+        <script src="scripts/boards/boards.new-board.js"></script>
+        <script src="scripts/boards/boards.new-team.js"></script>
 
         <!-- Board details -->
-        <script src="board-details/board-details.controller.js"></script>
+        <script src="scripts/board-details/board-details.controller.js"></script>
 
         <!-- Login -->
-        <script src="login/login.controller.js"></script>
+        <script src="scripts/login/login.controller.js"></script>
 
         <!-- Register -->
-        <script src="register/register.controller.js"></script>
+        <script src="scripts/register/register.controller.js"></script>
 
         <!-- Profile -->
-        <script src="profile/profile.controller.js"></script>
+        <script src="scripts/profile/profile.controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -20,8 +20,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     return Auth.$requireAuth().then(function(auth){
       return Users.getProfile(auth.uid).$loaded();
     }, function(error){
-      // send user to profile page to fill out details
-      // $state.go('main');
+      console.log('error');
     });
   }
 
@@ -31,7 +30,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
 
   .state('boards', {
     url: '/',
-    templateUrl: '/boards/boards.html',
+    templateUrl: '/scripts/boards/boards.html',
     controller: 'BoardsCtrl as boardsCtrl',
     resolve: {
       auth: auth,
@@ -46,7 +45,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
 
   .state('board-details', {
     url: '/{boardId}/board-details',
-    templateUrl: '/board-details/board-details.html',
+    templateUrl: '/scripts/board-details/board-details.html',
     controller: 'BoardDetailsCtrl as boardDetailsCtrl',
     resolve: {
       auth: auth,
@@ -77,21 +76,21 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
 
   .state('register', {
     url: '/register',
-    templateUrl: '/register/register.html',
+    templateUrl: '/scripts/register/register.html',
     controller: 'RegisterCtrl as registerCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
 
   .state('login', {
     url: '/login',
-    templateUrl: '/login/login.html',
+    templateUrl: '/scripts/login/login.html',
     controller: 'LoginCtrl as loginCtrl',
     resolve: { requireNoAuth: requireNoAuth }
   })
 
   .state('profile', {
     url: '/profile',
-    templateUrl: '/profile/profile.html',
+    templateUrl: '/scripts/profile/profile.html',
     controller: 'ProfileCtrl as profileCtrl',
     resolve: {
       auth: auth,
