@@ -119,21 +119,29 @@ CUSTOM STYLES
   height: 96px;
 }
 
+.board div.well:hover {
+  background-color: #d1cfcb;
+}
+
+a.board:hover {
+  text-decoration: none;
+}
+
 .user-board div.well {
   background-color: #31b0d5;
   border-color: #269abc;
-  /*background-color: #0079BF !important;*/
   color: #fcf8e3;
 }
 
 .user-board div.well:hover {
   background-color: #1b8dbb;
+  text-decoration: none;
 }
 
 
 a.user-brand:hover, a:focus {
-    color: #79a736;
-    text-decoration: underline;
+  color: #79a736;
+  text-decoration: underline;
 }
 
 .board-title {
