@@ -24,12 +24,12 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     });
   }
 
-  $urlRouterProvider.otherwise('/dashboard');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
 
   .state('boards', {
-    url: '/dashboard',
+    url: '/',
     templateUrl: '/scripts/boards/boards.html',
     controller: 'BoardsCtrl as boardsCtrl',
     resolve: {
