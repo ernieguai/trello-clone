@@ -8,7 +8,7 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, board, lists, cards, $scope) {
+  .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, board, lists, cards) {
     var boardDetailsCtrl = this;
 
     boardDetailsCtrl.boards = boards;
@@ -37,7 +37,7 @@ angular.module('trellocloneApp')
       boardDetailsCtrl.boards.$save(boardIndex);
     };
 
-    $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+    boardDetailsCtrl.dropCallback = function(event, index, item, external, type, allowedType) {
 
       // TODO: refactor  -- use callbacks from the saves before updating all numbers. Moving too fast is screwing up the numbering
 
@@ -66,9 +66,7 @@ angular.module('trellocloneApp')
         console.log('dropping in the same list and the same spot');
         return false;
       }
-      // if own list and target index == normal list
-      // return false
-      // else
+
 
       // Move the card into new list
       boardDetailsCtrl.cards[originCardIndex].list = targetListIndex;
@@ -118,52 +116,16 @@ angular.module('trellocloneApp')
 
     boardDetailsCtrl.addNewCard = function (list) {
 
-      console.log('cardsInList before: ', list.cardsInList);
-      // cannot store a negative number in the array... need to add 2
-      //var cardsInList = list.cardsInList ? list.cardsInList : 0;
-      //console.log('cardsInlist after: ', cardsInList);
-      // var listNumber = cardsInList + 1;
-      // need an if statement here...
       var cardsInList;
-      // if (!list.cardsInList) {
-      //   console.log("setting CardsInList to 0");
-      //   cardsInList = 0;
-      // } else {
-      //   console.log("incrementing CardsInList");
-      //   cardsInList = list.cardsInList + 1;
-      // }
-
-      // if (list.cardsInList && list.cardsInList.length > -1) {
-      //   console.log("incrementing CardsInList");
-      //   cardsInList = list.cardsInList + 1;
-      // } else {
-      //   console.log("setting CardsInList to 0");
-      //   cardsInList = 0;
-      // }
 
       if (!list.cardsInList) {
-        console.log("FIRST CARD - setting CardsInList to 0");
         cardsInList = 1;
-      // } else if (list.cardsInList === 0) {
-      //   console.log("LIST EQUALS ZERO - incrementing CardsInList");
-      //   cardsInList = list.cardsInList + 1;
       } else {
-        console.log("incrementing CardsInList");
         cardsInList = list.cardsInList + 1;
       }
 
-      console.log('cardsInlist after: ', cardsInList);
-
       var listNumber = cardsInList;
       var listIndex = boardDetailsCtrl.lists.$indexFor(list.$id);
-      console.log("listNumber: ", listNumber);
-
-      boardDetailsCtrl.lists[listIndex].cardsInList = listNumber;
-      boardDetailsCtrl.lists.$save(listIndex).then(function(success) {
-        console.log('success: ', success);
-      }, function(error) {
-        console.log('error: ', error);
-      });
 
       boardDetailsCtrl.cards.$add({
         uid: profile.$id,
@@ -173,7 +135,10 @@ angular.module('trellocloneApp')
         listNumber: listNumber
       }).then(function () {
         list.newCard = { title: '' };
+        list.cardsInList = listNumber;
+        list.$save(listIndex);
       });
+
     };
 
   });

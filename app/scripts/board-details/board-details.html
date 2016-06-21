@@ -25,7 +25,7 @@
         <div class="panel-body list-body">
 
           <ul dnd-list="list"
-              dnd-drop="dropCallback(event, index, item, external, type, 'cardType')"
+              dnd-drop="boardDetailsCtrl.dropCallback(event, index, item, external, type, 'cardType')"
           >
               <li ng-repeat="card in boardDetailsCtrl.models.cards | filter:{list:list.$id} | orderBy: 'listNumber'"
                   dnd-type="cardType"
