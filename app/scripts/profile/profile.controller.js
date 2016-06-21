@@ -1,4 +1,3 @@
-(function () {
 'use strict';
 
 /**
@@ -25,4 +24,3 @@ angular.module('trellocloneApp')
     profileCtrl.gravatarURL = auth.password.profileImageURL;
 
   });
-})();

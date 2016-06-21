@@ -32,23 +32,6 @@
       <div ui-view></div>
     </div>
 
-    <!-- <br /> -->
-    <!-- <br /> -->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
-
-    <!-- Stripe: load this as an npm contructor -->
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -62,41 +45,41 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/app.config.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/app.config.js"></script>
 
-        <!--  Services -->
-        <script src="scripts/services/auth.service.js"></script>
-        <script src="scripts/services/users.service.js"></script>
-        <script src="scripts/services/boards.service.js"></script>
-        <script src="scripts/services/teams.service.js"></script>
-        <script src="scripts/services/lists.service.js"></script>
-        <script src="scripts/services/cards.service.js"></script>
+    <!--  Services -->
+    <script src="scripts/services/auth.service.js"></script>
+    <script src="scripts/services/users.service.js"></script>
+    <script src="scripts/services/boards.service.js"></script>
+    <script src="scripts/services/teams.service.js"></script>
+    <script src="scripts/services/lists.service.js"></script>
+    <script src="scripts/services/cards.service.js"></script>
 
-        <!-- Layout -->
-        <script src="scripts/layout/header.controller.js"></script>
-        <script src="scripts/layout/footer.controller.js"></script>
+    <!-- Layout -->
+    <script src="scripts/layout/header.controller.js"></script>
+    <script src="scripts/layout/footer.controller.js"></script>
 
-        <!--  Alerts -->
-        <script src="scripts/alerts/alert.service.js"></script>
+    <!--  Alerts -->
+    <script src="scripts/alerts/alert.service.js"></script>
 
-        <!-- Boards -->
-        <script src="scripts/boards/boards.controller.js"></script>
-        <script src="scripts/boards/boards.new-board.js"></script>
-        <script src="scripts/boards/boards.new-team.js"></script>
+    <!-- Boards -->
+    <script src="scripts/boards/boards.controller.js"></script>
+    <script src="scripts/boards/boards.new-board.js"></script>
+    <script src="scripts/boards/boards.new-team.js"></script>
 
-        <!-- Board details -->
-        <script src="scripts/board-details/board-details.controller.js"></script>
+    <!-- Board details -->
+    <script src="scripts/board-details/board-details.controller.js"></script>
 
-        <!-- Login -->
-        <script src="scripts/login/login.controller.js"></script>
+    <!-- Login -->
+    <script src="scripts/login/login.controller.js"></script>
 
-        <!-- Register -->
-        <script src="scripts/register/register.controller.js"></script>
+    <!-- Register -->
+    <script src="scripts/register/register.controller.js"></script>
 
-        <!-- Profile -->
-        <script src="scripts/profile/profile.controller.js"></script>
-        <!-- endbuild -->
+    <!-- Profile -->
+    <script src="scripts/profile/profile.controller.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

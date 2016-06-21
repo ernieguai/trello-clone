@@ -27,8 +27,6 @@ module.exports = function(config) {
       'bower_components/angularfire/dist/angularfire.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/angular-credit-cards/release/angular-credit-cards.js',
-      'bower_components/angular-stripe/release/angular-stripe.js',
       'bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
