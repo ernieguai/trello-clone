@@ -6,12 +6,13 @@
     <div class="form-group">
       <label for="email-login">Email address</label>
       <input id="email-login" name="email" ng-model="loginCtrl.userAuth.email" type="email" class="form-control input-sm" placeholder="Email address" required>
-      <!-- <p class="help-block" ng-show="login.email.$dirty && login.email.$invalid">Please enter a proper email</p> -->
+      <p class="help-block" ng-show="login.email.$dirty && login.email.$invalid">Please enter a valid email</p>
     </div>
 
     <div class="form-group">
       <label for="password-login">Password</label>
       <input id="password-login" name="password" ng-model="loginCtrl.userAuth.password" type="password" class="form-control input-sm" placeholder="Password" required>
+      <p class="help-block" ng-show="login.password.$dirty && login.password.$invalid">Please enter a valid password</p>
     </div>
 
     <div class="form-group">

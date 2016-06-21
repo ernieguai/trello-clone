@@ -15,7 +15,6 @@ angular.module('trellocloneApp')
     profileCtrl.email = auth.password.email;
 
     profileCtrl.updateProfile = function() {
-      // todo : validate the profile properties before saving them
       profileCtrl.profile.$save().then(function() {
         $state.go('projects');
       });

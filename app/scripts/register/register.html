@@ -6,20 +6,19 @@
     <div class="form-group">
       <label for="name-register">Name</label>
       <input id="name-register" name="name" ng-model="registerCtrl.userProfile.name" type="text" class="form-control input-sm" placeholder="First Last" required>
-      <!-- <p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">Please enter a proper email</p> -->
+      <p class="help-block" ng-show="register.name.$dirty && register.name.$invalid">Please enter a valid name</p>
     </div>
 
     <div class="form-group">
       <label for="email-register">Email address</label>
       <input id="email-register" name="email" ng-model="registerCtrl.userAuth.email" type="email" class="form-control input-sm" placeholder="Email address" required>
-      <!-- <p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">Please enter a proper email</p> -->
+      <p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">Please enter a valid email</p>
     </div>
 
     <div class="form-group">
       <label for="password-register">Password</label>
       <input id="password-register" name="password" ng-model="registerCtrl.userAuth.password" type="password" class="form-control input-sm" placeholder="Password" required>
-      <!-- <input name="password_confirm" ng-model="password_confirm" type="password" class="form-control" placeholder="Confirm Password" validate-equals='password' required> -->
-      <!-- <p class="help-block" ng-show="register.password_confirm.$dirty && register.password_confirm.$invalid">Please match the passwords.</p> -->
+      <p class="help-block" ng-show="register.password.$dirty && register.password.$invalid">Please enter a valid password</p>
     </div>
 
     <div class="form-group">
