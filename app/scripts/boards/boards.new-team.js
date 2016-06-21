@@ -8,12 +8,15 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('NewTeamCtrl', function (teams, $uibModalInstance) {
+  .controller('NewTeamCtrl', function (teams, $uibModalInstance, profile) {
     var newTeamCtrl = this;
 
     newTeamCtrl.teams = teams;
+    newTeamCtrl.profile = profile;
 
     newTeamCtrl.newTeam = {
+      uid: newTeamCtrl.profile.$id,
+      timestamp: Firebase.ServerValue.TIMESTAMP,
       name: '',
       description: ''
     };
