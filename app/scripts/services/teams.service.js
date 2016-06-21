@@ -9,9 +9,14 @@
  */
 angular.module('trellocloneApp')
   .factory('Teams', function ($firebaseArray, FirebaseUrl) {
-    var ref = new Firebase(FirebaseUrl + 'teams');
-    var channels = $firebaseArray(ref);
+    var teamsRef = new Firebase(FirebaseUrl + 'teams');
+    var teams = $firebaseArray(teamsRef);
 
-    // Public API here
-    return channels;
+    return {
+      forUser: function(userId) {
+        return $firebaseArray(teamsRef.orderByChild("uid").equalTo(userId));
+      },
+
+      all: teams
+    };
   });

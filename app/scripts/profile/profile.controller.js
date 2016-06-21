@@ -16,7 +16,7 @@ angular.module('trellocloneApp')
 
     profileCtrl.updateProfile = function() {
       profileCtrl.profile.$save().then(function() {
-        $state.go('projects');
+        $state.go('boards');
       });
     };
 

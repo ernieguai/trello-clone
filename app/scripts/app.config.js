@@ -11,27 +11,24 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
   function requireNoAuth($state, Auth) {
     return Auth.$requireAuth().then(function(auth) {
       $state.go('boards');
-    }, function(error) {
-      console.log(error);
-    });
+    }, function(error) { return error; });
   }
 
   function profileResolve($state, Auth, Users) {
     return Auth.$requireAuth().then(function(auth){
       return Users.getProfile(auth.uid).$loaded();
-    }, function(error){
-      console.log(error);
-    });
+    }, function(error){ return error; });
   }
 
-  function teamsResolve(Teams) { return Teams.$loaded(); }
+  function teamsResolve(Teams, profile) {
+     return Teams.forUser(profile.$id).$loaded();
+   }
 
   function boardsResolve(Boards, profile) {
     return Boards.forUser(profile.$id).$loaded();
   }
 
   function boardResolve($stateParams, Boards) {
-    console.log("specific record: ", Boards.all.$getRecord($stateParams.boardId));
     return Boards.all.$getRecord($stateParams.boardId);
   }
 
