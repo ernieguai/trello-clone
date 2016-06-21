@@ -20,7 +20,6 @@ angular.module('trellocloneApp')
         timeout: timeout || 2000
       });
 
-      // TODO: scroll to the top of the page when an alert happens. Replace with angular animations.
       $window.scrollTo(0, 0);
 
       $rootScope.closeAlert = function(index) {

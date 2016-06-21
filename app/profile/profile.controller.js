@@ -9,7 +9,7 @@
  * Controller of the trellocloneApp
  */
 angular.module('trellocloneApp')
-  .controller('ProfileCtrl', function ($state, md5, auth, profile, Auth, Users) {
+  .controller('ProfileCtrl', function ($state, auth, profile, Auth, Users) {
     var profileCtrl = this;
 
     profileCtrl.profile = profile;

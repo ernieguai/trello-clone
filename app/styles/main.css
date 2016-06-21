@@ -97,6 +97,10 @@ CUSTOM STYLES
   padding-top: 62px;
 }
 
+div.alert {
+  margin-top: -29px;
+}
+
 #header-gravatar {
   padding-top: 11px;
   padding-bottom: 11px;

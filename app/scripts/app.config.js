@@ -91,7 +91,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
 
   .state('profile', {
     url: '/profile',
-    templateUrl: '/views/profile.html',
+    templateUrl: '/profile/profile.html',
     controller: 'ProfileCtrl as profileCtrl',
     resolve: {
       auth: auth,

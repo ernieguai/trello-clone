@@ -26,7 +26,7 @@
     <!-- Add your site or application content here -->
     <div ng-include="'layout/header.html'"></div>
 
-    <div class="alert-div" ng-include="'views/alert.html'"></div>
+    <div class="alert-div" ng-include="'alerts/alert.html'"></div>
 
     <div class="container-fluid">
       <div ui-view></div>
@@ -60,7 +60,6 @@
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-md5/angular-md5.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
     <script src="bower_components/angular-stripe/release/angular-stripe.js"></script>
@@ -75,19 +74,17 @@
         <!--  Services -->
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/users.js"></script>
-        <script src="scripts/services/alert.js"></script>
         <script src="scripts/services/boards.js"></script>
         <script src="scripts/services/teams.js"></script>
-
-
-
-        <script src="scripts/controllers/profile.js"></script>
-        <script src="scripts/controllers/settings.js"></script>
-
+        <script src="scripts/services/lists.js"></script>
+        <script src="scripts/services/cards.js"></script>
 
         <!-- Layout -->
         <script src="layout/header.controller.js"></script>
         <script src="layout/footer.controller.js"></script>
+
+        <!--  Alerts -->
+        <script src="alerts/alert.service.js"></script>
 
         <!-- Boards -->
         <script src="boards/boards.controller.js"></script>
@@ -102,8 +99,9 @@
 
         <!-- Register -->
         <script src="register/register.controller.js"></script>
-        <script src="scripts/services/lists.js"></script>
-        <script src="scripts/services/cards.js"></script>
+
+        <!-- Profile -->
+        <script src="profile/profile.controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>
