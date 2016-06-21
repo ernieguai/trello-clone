@@ -89,42 +89,6 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     resolve: { requireNoAuth: requireNoAuth }
   })
 
-
-
-
-
-
-
-
-
-
-
-  .state('projects', {
-    url: '/projects',
-    templateUrl: '/views/projects.html',
-    controller: 'ProjectsCtrl as projectsCtrl',
-    resolve: {
-      projects: function (Projects){
-        // todo: projects should be for members of that company only!!
-        return Projects.$loaded();
-      },
-      auth: auth
-    }
-  })
-
-  .state('create-project', {
-    url: '/create-project',
-    templateUrl: '/views/create-project.html',
-    controller: 'ProjectsCtrl as projectsCtrl',
-    resolve: {
-      projects: function(Projects) {
-        // todo: projects should be for members of that company only!!
-        return Projects.$loaded();
-      },
-      auth: auth
-    }
-  })
-
   .state('profile', {
     url: '/profile',
     templateUrl: '/views/profile.html',
@@ -133,25 +97,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
       auth: auth,
       profile: profile
     }
-  })
-
-  //-----------------------------------------
-  // SETTINGS VIEW AND SUBVIEWS
-  //-----------------------------------------
-
-  .state('settings', {
-    url: '/settings',
-    templateUrl: '/views/settings.html',
-    controller: 'SettingsCtrl as settingsCtrl',
-    resolve: { auth: auth }
-  })
-
-  .state('settings.edit-credit-card', {
-    url: '/edit-credit-card',
-    templateUrl: '/views/settings.edit-credit-card.html',
-    controller: 'SettingsCtrl as settingsCtrl'
   });
-
 
 })
 

@@ -1,55 +1,29 @@
-<form ng-submit="profileCtrl.updateProfile()" novalidate>
-  <fieldset>
+<br />
 
-    <legend><h1>Edit Profile</h1></legend>
+<div class="well col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 centered">
+  <form ng-submit="profileCtrl.updateProfile()" novalidate>
+    <fieldset>
 
-    <img class="img-rounded" ng-cloak ng-src="{{ profileCtrl.gravatarURL }}" />
+      <legend><h1>Edit Profile</h1></legend>
 
-    <div class="form-group">
-      <label for="first-name">First name</label>
-      <input id="first-name" required type="text" class="form-control" placeholder="First name" ng-model="profileCtrl.profile.firstName">
-    </div>
+      <img class="img-rounded" ng-cloak ng-src="{{ profileCtrl.gravatarURL }}" />
 
-    <div class="form-group">
-      <label for="last-name">Last name</label>
-      <input id="last-name" required type="text" class="form-control" placeholder="Last name" ng-model="profileCtrl.profile.lastName">
-    </div>
+      <div class="form-group">
+        <label for="first-name">Name</label>
+        <input id="first-name" required type="text" class="form-control" placeholder="First Last" ng-model="profileCtrl.profile.name">
+      </div>
 
-    <div class="form-group">
-      <label for="email-address">Email address (username)</label>
-      <input id="email-address" disabled type="text" class="form-control" placeholder="Email address" ng-model="profileCtrl.email">
-    </div>
+      <div class="form-group">
+        <label for="email-address">Email address (username)</label>
+        <input id="email-address" disabled type="text" class="form-control" placeholder="Email address" ng-model="profileCtrl.email">
+      </div>
 
-    <br />
+      <br />
 
-    <div class="form-group">
-      <label for="department">Department</label>
-      <input id="department" required type="text" class="form-control" placeholder="Department" ng-model="profileCtrl.profile.department">
-    </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Update profile">
+      </div>
 
-    <div class="form-group">
-      <label for="billable-rate">Billable rate</label>
-      <input id="billable-rate" required type="text" class="form-control" placeholder="Billable rate" ng-model="profileCtrl.profile.billableRate">
-    </div>
-
-    <div class="form-group">
-      <label for="cost-rate">Cost rate</label>
-      <input id="cost-rate" required type="text" class="form-control" placeholder="Cost rate" ng-model="profileCtrl.profile.costRate">
-    </div>
-
-    <div class="form-group">
-      <label for="time-zone">Time zone</label>
-      <input id="time-zone" required type="text" class="form-control" placeholder="Time zone" ng-model="profileCtrl.profile.timeZone">
-    </div>
-
-    <div class="form-group">
-      <label for="photo">Photo</label>
-      <input id="photo" required type="text" class="form-control" placeholder="Photo" ng-model="profileCtrl.profile.photo">
-    </div>
-
-    <div class="form-group">
-      <input type="submit" class="btn btn-default" value="Update profile">
-    </div>
-
-  </fieldset>
-</form>
+    </fieldset>
+  </form>
+</div>
