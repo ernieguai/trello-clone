@@ -8,20 +8,40 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     });
   }
 
-  function requireNoAuth ($state, Auth) {
+  function requireNoAuth($state, Auth) {
     return Auth.$requireAuth().then(function(auth) {
       $state.go('boards');
     }, function(error) {
-      return;
+      console.log(error);
     });
   }
 
-  function profile ($state, Auth, Users) {
+  function profile($state, Auth, Users) {
     return Auth.$requireAuth().then(function(auth){
       return Users.getProfile(auth.uid).$loaded();
     }, function(error){
-      console.log('error');
+      console.log(error);
     });
+  }
+
+  function teams(Teams) { return Teams.$loaded(); }
+
+  function boards(Boards) { return Boards.$loaded(); }
+
+  function board($stateParams, Boards) {
+    return Boards.$getRecord($stateParams.boardId);
+  }
+
+  function boardTitle($stateParams, Boards) {
+    return Boards.$getRecord($stateParams.boardId).title;
+  }
+
+  function lists($stateParams, Lists) {
+    return Lists.forBoard($stateParams.boardId).$loaded();
+  }
+
+  function cards(Cards) {
+    return Cards.all.$loaded();
   }
 
   $urlRouterProvider.otherwise('/');
@@ -32,46 +52,14 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     url: '/',
     templateUrl: '/scripts/boards/boards.html',
     controller: 'BoardsCtrl as boardsCtrl',
-    resolve: {
-      auth: auth,
-      teams: function (Teams) {
-        return Teams.$loaded();
-      },
-      boards: function (Boards) {
-        return Boards.$loaded();
-      }
-    }
+    resolve: { auth:auth, teams:teams, boards:boards }
   })
 
   .state('board-details', {
     url: '/{boardId}/board-details',
     templateUrl: '/scripts/board-details/board-details.html',
     controller: 'BoardDetailsCtrl as boardDetailsCtrl',
-    resolve: {
-      auth: auth,
-      profile: profile,
-      teams: function (Teams) {
-        return Teams.$loaded();
-      },
-      boards: function (Boards) {
-        return Boards.$loaded();
-      },
-      lists: function($stateParams, Lists) {
-        return Lists.forBoard($stateParams.boardId).$loaded();
-      },
-      // cards: function(Cards, profile, $stateParams) {
-      //   return Cards.forUser($stateParams.uid, profile.$id).loaded();
-      // },
-      cards: function (Cards) {
-        return Cards.all.$loaded();
-      },
-      boardTitle: function($stateParams, Boards) {
-        return Boards.$getRecord($stateParams.boardId).title;
-      },
-      board: function($stateParams, Boards) {
-        return Boards.$getRecord($stateParams.boardId);
-      },
-    }
+    resolve: { auth:auth, profile:profile, teams:teams, boards:boards, board:board, boardTitle:boardTitle, lists:lists, cards:cards }
   })
 
   .state('register', {

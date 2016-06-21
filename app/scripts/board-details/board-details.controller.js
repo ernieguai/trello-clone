@@ -9,7 +9,6 @@
  */
 angular.module('trellocloneApp')
   .controller('BoardDetailsCtrl', function (profile, boardTitle, boards, board, lists, cards, $scope) {
-
     var boardDetailsCtrl = this;
 
     boardDetailsCtrl.boards = boards;
