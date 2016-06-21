@@ -14,7 +14,6 @@ angular.module('trellocloneApp')
     boardsCtrl.teams = teams;
     boardsCtrl.boards = boards;
     boardsCtrl.profile = profile;
-    console.log(boardsCtrl.profile);
 
     function teamsResolve() { return boardsCtrl.teams; }
     function boardsResolve() { return boardsCtrl.boards; }

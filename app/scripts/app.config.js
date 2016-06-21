@@ -2,7 +2,7 @@
 
 angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvider) {
 
-  function auth ($state, Users, Auth) {
+  function auth($state, Users, Auth) {
     return Auth.$requireAuth().catch(function() {
       $state.go('register');
     });
@@ -26,14 +26,17 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
 
   function teamsResolve(Teams) { return Teams.$loaded(); }
 
-  function boardsResolve(Boards) { return Boards.$loaded(); }
+  function boardsResolve(Boards, profile) {
+    return Boards.forUser(profile.$id).$loaded();
+  }
 
   function boardResolve($stateParams, Boards) {
-    return Boards.$getRecord($stateParams.boardId);
+    console.log("specific record: ", Boards.all.$getRecord($stateParams.boardId));
+    return Boards.all.$getRecord($stateParams.boardId);
   }
 
   function boardTitle($stateParams, Boards) {
-    return Boards.$getRecord($stateParams.boardId).title;
+    return Boards.all.$getRecord($stateParams.boardId).title;
   }
 
   function listsResolve($stateParams, Lists) {
@@ -54,10 +57,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     controller: 'BoardsCtrl as boardsCtrl',
     resolve: { auth:auth, teams:teamsResolve,
       profile:profileResolve,
-      // boards:boardsResolve
-      boards: function (Boards, profile) {
-        return Boards.forUser(profile.$id).$loaded();
-      }
+      boards:boardsResolve
     }
   })
 
