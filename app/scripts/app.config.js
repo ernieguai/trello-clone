@@ -24,12 +24,11 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     });
   }
 
-  function teams(Teams) { return Teams.$loaded(); }
+  function teamsResolve(Teams) { return Teams.$loaded(); }
 
-  function boards(Boards) { return Boards.$loaded(); }
-  // function boards(Boards) { return Boards.child(profile.$id).$loaded(); }
+  function boardsResolve(Boards) { return Boards.$loaded(); }
 
-  function board($stateParams, Boards) {
+  function boardResolve($stateParams, Boards) {
     return Boards.$getRecord($stateParams.boardId);
   }
 
@@ -37,11 +36,11 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     return Boards.$getRecord($stateParams.boardId).title;
   }
 
-  function lists($stateParams, Lists) {
+  function listsResolve($stateParams, Lists) {
     return Lists.forBoard($stateParams.boardId).$loaded();
   }
 
-  function cards(Cards) {
+  function cardsResolve(Cards) {
     return Cards.all.$loaded();
   }
 
@@ -53,26 +52,12 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     url: '/',
     templateUrl: '/scripts/boards/boards.html',
     controller: 'BoardsCtrl as boardsCtrl',
-    resolve: { auth:auth, teams:teams,
+    resolve: { auth:auth, teams:teamsResolve,
       profile:profileResolve,
-      // boards:boards
+      // boards:boardsResolve
       boards: function (Boards, profile) {
-        console.log(Boards, profile);
-        console.log((profile.$id));
-        // var userBoards = Boards.forUser();
         return Boards.forUser(profile.$id).$loaded();
       }
-      // boards: function (Boards, profile) {
-      //   console.log(profile.$id);
-      //   //console.log(Boards.all.orderBychild("uid").equalTo(profile.$id));
-      //   return Boards.all.$loaded();
-      // }
-      // boards: function(Boards, profile){
-      //   console.log(Boards);
-      //   console.log(profile.$id);
-      //   console.log(Boards.$getRecord(profile.$id));
-      //   return Boards.$getRecord(profile.$id);
-      // }
     }
   })
 
@@ -80,7 +65,7 @@ angular.module('trellocloneApp').config(function($stateProvider, $urlRouterProvi
     url: '/{boardId}/board-details',
     templateUrl: '/scripts/board-details/board-details.html',
     controller: 'BoardDetailsCtrl as boardDetailsCtrl',
-    resolve: { auth:auth, profile:profileResolve, teams:teams, boards:boards, board:board, boardTitle:boardTitle, lists:lists, cards:cards }
+    resolve: { auth:auth, profile:profileResolve, teams:teamsResolve, boards:boardsResolve, board:boardResolve, boardTitle:boardTitle, lists:listsResolve, cards:cardsResolve }
   })
 
   .state('register', {
